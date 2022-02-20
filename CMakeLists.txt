@@ -9,7 +9,7 @@ endif()
 project(ADS1115_RaspberryPi_Library VERSION 1.0.0 LANGUAGES CXX)
 include(GNUInstallDirs)
 
-# add_subdirectory(example)
+add_subdirectory(example)
 
 # add_compile_options(-Wall -Wconversion -Wextra -pedantic)
 

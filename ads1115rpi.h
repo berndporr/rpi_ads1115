@@ -25,6 +25,7 @@ static const char could_not_open_i2c[] = "Could not open I2C.\n";
 
 #define DEFAULT_ADS1115_ADDRESS 0x48
 
+#define DEFAULT_DATA_READY_GPIO 17
 
 /**
  * Callback for new samples which needs to be implemented by the main program.
@@ -42,6 +43,11 @@ public:
  * ADS1115 initial settings when starting the device.
  **/
 struct ADS1115settings {
+
+	/**
+	 * I2C bus used (99% always one)
+	 **/
+	int i2c_bus = 1;
 	
 	/**
 	 * I2C address of the ads1115
@@ -111,6 +117,16 @@ struct ADS1115settings {
 	 * Unipolar or biploar
 	 **/
 	Modes mode = Unipolar;
+
+	/**
+	 * If set to true the pigpio is initialised
+	 **/
+	bool initPIGPIO = true;
+
+	/**
+	 * Default GPIO pin for data ready
+	 **/
+	int drdy_gpio = DEFAULT_DATA_READY_GPIO;
 };
 
 
@@ -158,6 +174,18 @@ private:
 	ADS1115callback* ads1115callback = nullptr;
 	ADS1115settings ads1115settings;
 
+	void dataReady();
+
+	static void gpioISR(int gpio, int level, uint32_t tick, void* userdata) {
+		((ADS1115rpi*)userdata)->dataReady();
+	}
+
+	void i2c_writeWord(uint8_t reg, unsigned data);
+        unsigned i2c_readWord(uint8_t reg);
+
+	const int reg_config = 1;
+	const int reg_lo_thres = 2;
+	const int reg_hi_thres = 3;
 };
 
 
