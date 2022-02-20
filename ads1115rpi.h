@@ -19,6 +19,10 @@
 #include <stdlib.h>
 #include <pigpio.h>
 
+#ifndef NDEBUG
+#define DEBUG
+#endif
+
 static const char could_not_open_i2c[] = "Could not open I2C.\n";
 
 #define ISR_TIMEOUT 1000
@@ -104,19 +108,6 @@ struct ADS1115settings {
 	 * Requested input channel (0 or 1)
 	 **/
 	Input channel = AIN0;
-
-	/**
-	 * Unipolar or bipolar mode
-	 **/
-	enum Modes {
-		Bipolar  = 0,
-		Unipolar = 1
-	};
-
-	/**
-	 * Unipolar or biploar
-	 **/
-	Modes mode = Unipolar;
 
 	/**
 	 * If set to true the pigpio is initialised
