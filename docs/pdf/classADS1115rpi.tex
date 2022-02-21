@@ -60,7 +60,12 @@ The default device is /dev/spidev0.0.
 
 Called when a new sample is available. 
 
-This needs to be implemented in a derived class by the client. Defined as abstract. \mbox{\Hypertarget{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}\label{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}} 
+This needs to be implemented in a derived class by the client. Defined as abstract. 
+\begin{DoxyParams}{Parameters}
+{\em sample} & Voltage from the selected channel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}\label{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}} 
 \index{ADS1115rpi@{ADS1115rpi}!setChannel@{setChannel}}
 \index{setChannel@{setChannel}!ADS1115rpi@{ADS1115rpi}}
 \doxysubsubsection{\texorpdfstring{setChannel()}{setChannel()}}
@@ -70,7 +75,12 @@ This needs to be implemented in a derived class by the client. Defined as abstra
 
 Selects a different channel at the multiplexer while running. 
 
-Call this in the callback handler \mbox{\hyperlink{classADS1115rpi_a515633c671efe89d43b814d4682440af}{has\+Sample()}} to cycle through different channels. \mbox{\Hypertarget{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}\label{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}} 
+Call this in the callback handler \mbox{\hyperlink{classADS1115rpi_a515633c671efe89d43b814d4682440af}{has\+Sample()}} to cycle through different channels. 
+\begin{DoxyParams}{Parameters}
+{\em channel} & Sets the channel from A0..A3. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}\label{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}} 
 \index{ADS1115rpi@{ADS1115rpi}!start@{start}}
 \index{start@{start}!ADS1115rpi@{ADS1115rpi}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}}
@@ -82,7 +92,7 @@ Starts the data acquisition in the background and the callback is called with ne
 
 
 \begin{DoxyParams}{Parameters}
-{\em sampling\+Rate} & The sampling rate of the A\+DC. \\
+{\em settings} & A struct with the settings. \\
 \hline
 \end{DoxyParams}
 

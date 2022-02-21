@@ -140,6 +140,7 @@ public:
 	 * Called when a new sample is available.
 	 * This needs to be implemented in a derived
 	 * class by the client. Defined as abstract.
+	 * \param sample Voltage from the selected channel
 	 **/
 	virtual void hasSample(float sample) = 0;
 
@@ -148,13 +149,14 @@ public:
 	 * while running.
 	 * Call this in the callback handler hasSample()
 	 * to cycle through different channels.
+	 * \param channel Sets the channel from A0..A3.
 	 **/
 	void setChannel(ADS1115settings::Input channel);
 
 	/**
 	 * Starts the data acquisition in the background and the
 	 * callback is called with new samples.
-	 * \param samplingRate The sampling rate of the ADC.
+	 * \param settings A struct with the settings.
 	 **/
 	void start(ADS1115settings settings = ADS1115settings() );
 

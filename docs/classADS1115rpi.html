@@ -171,7 +171,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>Called when a new sample is available. </p>
-<p>This needs to be implemented in a derived class by the client. Defined as abstract. </p>
+<p>This needs to be implemented in a derived class by the client. Defined as abstract. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sample</td><td>Voltage from the selected channel </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -192,7 +197,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>Selects a different channel at the multiplexer while running. </p>
-<p>Call this in the callback handler <a class="el" href="classADS1115rpi.html#a515633c671efe89d43b814d4682440af" title="Called when a new sample is available.">hasSample()</a> to cycle through different channels. </p>
+<p>Call this in the callback handler <a class="el" href="classADS1115rpi.html#a515633c671efe89d43b814d4682440af" title="Called when a new sample is available.">hasSample()</a> to cycle through different channels. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>Sets the channel from A0..A3. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -215,7 +225,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Starts the data acquisition in the background and the callback is called with new samples. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">samplingRate</td><td>The sampling rate of the ADC. </td></tr>
+    <tr><td class="paramname">settings</td><td>A struct with the settings. </td></tr>
   </table>
   </dd>
 </dl>
