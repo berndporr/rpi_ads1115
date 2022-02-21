@@ -137,9 +137,19 @@ public:
 	}
 
 	/**
-	 * Called when a new sample is available
+	 * Called when a new sample is available.
+	 * This needs to be implemented in a derived
+	 * class by the client. Defined as abstract.
 	 **/
 	virtual void hasSample(float sample) = 0;
+
+	/**
+	 * Selects a different channel at the multiplexer
+	 * while running.
+	 * Call this in the callback handler hasSample()
+	 * to cycle through different channels.
+	 **/
+	void setChannel(ADS1115settings::Input channel);
 
 	/**
 	 * Starts the data acquisition in the background and the
@@ -152,11 +162,6 @@ public:
 	 * Stops the data acquistion
 	 **/
 	void stop();
-
-	/**
-	 * Selects a different channel while running
-	 **/
-	void setChannel(ADS1115settings::Input channel);
 
 private:
 	ADS1115settings ads1115settings;
