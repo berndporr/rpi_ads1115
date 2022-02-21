@@ -15,8 +15,6 @@ at the requested sampling rate.
 The class uses the ALERT/RDY of the ADS1115 connected to GPIO 17 to
 establish the sampling rate. The ADS1115 ALERT/RDY pin is configured
 that it triggers the callback after a sample has become available.
-GPIO17 must be connected to ALERT/RDY of the ADS1115 or to another
-GPIO pin if GPIO17 is already in use.
 
 ## Building:
 
