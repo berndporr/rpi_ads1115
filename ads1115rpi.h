@@ -1,8 +1,8 @@
-#ifndef __AD7705COMM_H
-#define __AD7705COMM_H
+#ifndef __ADS1115RPI_H
+#define __ADS1115RPI_H
 
 /*
- * AD7705 class to read data at a given sampling rate
+ * ADS1115 class to read data at a given sampling rate
  *
  * Copyright (c) 2007  MontaVista Software, Inc.
  * Copyright (c) 2007  Anton Vorontsov <avorontsov@ru.mvista.com>
@@ -20,6 +20,7 @@
 #include <pigpio.h>
 #include <assert.h>
 
+// enable debug messages and error messages to stderr
 #ifndef NDEBUG
 #define DEBUG
 #endif
@@ -28,21 +29,14 @@ static const char could_not_open_i2c[] = "Could not open I2C.\n";
 
 #define ISR_TIMEOUT 1000
 
+// default address if ADDR is pulled to GND
 #define DEFAULT_ADS1115_ADDRESS 0x48
 
+// default GPIO pin for the ALRT/DRY signal
 #define DEFAULT_DATA_READY_GPIO 17
 
-/**
- * Callback for new samples which needs to be implemented by the main program.
- * The function hasSample needs to be overloaded in the main program.
- **/
-class ADS1115callback {
-public:
-	/**
-	 * Called after a sample has arrived.
-	 **/
-	virtual void hasSample(float sample) = 0;
-};
+
+
 
 /**
  * ADS1115 initial settings when starting the device.
@@ -50,7 +44,7 @@ public:
 struct ADS1115settings {
 
 	/**
-	 * I2C bus used (99% always one)
+	 * I2C bus used (99% always set to one)
 	 **/
 	int i2c_bus = 1;
 	
@@ -121,7 +115,7 @@ struct ADS1115settings {
 
 
 /**
- * This class reads data from the AD7705 in the background (separate
+ * This class reads data from the ADS1115 in the background (separate
  * thread) and calls a callback function whenever data is available.
  **/
 class ADS1115rpi {
@@ -141,12 +135,21 @@ public:
 	~ADS1115rpi() {
 		stop();
 	}
-       
+
 	/**
-	 * Sets the callback which is called whenever there is a sample.
-	 * \param cb Pointer to the callback interface.
+	 * Called when a new sample is available.
+	 * This needs to be implemented in a derived
+	 * class by the client. Defined as abstract.
 	 **/
-	void setCallback(ADS1115callback* cb);
+	virtual void hasSample(float sample) = 0;
+
+	/**
+	 * Selects a different channel at the multiplexer
+	 * while running.
+	 * Call this in the callback handler hasSample()
+	 * to cycle through different channels.
+	 **/
+	void setChannel(ADS1115settings::Input channel);
 
 	/**
 	 * Starts the data acquisition in the background and the
@@ -161,7 +164,6 @@ public:
 	void stop();
 
 private:
-	ADS1115callback* ads1115callback = nullptr;
 	ADS1115settings ads1115settings;
 
 	void dataReady();
