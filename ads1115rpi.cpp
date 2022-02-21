@@ -1,8 +1,5 @@
 #include "ads1115rpi.h"
 
-ADS1115rpi::ADS1115rpi() {
-}
-
 void ADS1115rpi::start(ADS1115settings settings) {
 	ads1115settings = settings;
 

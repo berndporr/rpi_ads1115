@@ -12,8 +12,6 @@ This class reads data from the A\+D\+S1115 in the background (separate thread) a
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classADS1115rpi_a7d9a75ff1f1ada74389791ff2b0d62db}{A\+D\+S1115rpi}} ()
-\begin{DoxyCompactList}\small\item\em Constructor with the spi\+Device. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}\label{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}} 
 \mbox{\hyperlink{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}{$\sim$\+A\+D\+S1115rpi}} ()
 \begin{DoxyCompactList}\small\item\em Destructor which makes sure the data acquisition has stopped. \end{DoxyCompactList}\item 
@@ -30,24 +28,6 @@ void \mbox{\hyperlink{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}{stop}} 
 
 \doxysubsection{Detailed Description}
 This class reads data from the A\+D\+S1115 in the background (separate thread) and calls a callback function whenever data is available. 
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classADS1115rpi_a7d9a75ff1f1ada74389791ff2b0d62db}\label{classADS1115rpi_a7d9a75ff1f1ada74389791ff2b0d62db}} 
-\index{ADS1115rpi@{ADS1115rpi}!ADS1115rpi@{ADS1115rpi}}
-\index{ADS1115rpi@{ADS1115rpi}!ADS1115rpi@{ADS1115rpi}}
-\doxysubsubsection{\texorpdfstring{ADS1115rpi()}{ADS1115rpi()}}
-{\footnotesize\ttfamily A\+D\+S1115rpi\+::\+A\+D\+S1115rpi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Constructor with the spi\+Device. 
-
-The default device is /dev/spidev0.0. 
-\begin{DoxyParams}{Parameters}
-{\em spi\+Device} & The raw /dev spi device. \\
-\hline
-\end{DoxyParams}
-
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classADS1115rpi_a515633c671efe89d43b814d4682440af}\label{classADS1115rpi_a515633c671efe89d43b814d4682440af}} 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ads1115rpi_20',['ADS1115rpi',['../classADS1115rpi.html#a7d9a75ff1f1ada74389791ff2b0d62db',1,'ADS1115rpi']]]
+  ['hassample_20',['hasSample',['../classADS1115rpi.html#a515633c671efe89d43b814d4682440af',1,'ADS1115rpi']]]
 ];

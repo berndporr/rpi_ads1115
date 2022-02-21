@@ -33,7 +33,7 @@ static const char could_not_open_i2c[] = "Could not open I2C.\n";
 #define DEFAULT_ADS1115_ADDRESS 0x48
 
 // default GPIO pin for the ALRT/DRY signal
-#define DEFAULT_DATA_READY_GPIO 17
+#define DEFAULT_ALERT_RDY_TO_GPIO 17
 
 
 
@@ -47,12 +47,12 @@ struct ADS1115settings {
 	 * I2C bus used (99% always set to one)
 	 **/
 	int i2c_bus = 1;
-	
+
 	/**
 	 * I2C address of the ads1115
 	 **/
 	uint8_t address = DEFAULT_ADS1115_ADDRESS;
-	
+
 	/**
 	 * Sampling rates
 	 **/
@@ -73,7 +73,7 @@ struct ADS1115settings {
 	SamplingRates samplingRate = FS8HZ;
 
 	/**
-	 * Gains of the PGA
+	 * Full scale range: 2.048V, 1.024V, 0.512V or 0.256V.
 	 **/
 	enum PGA {
 		FSR2_048 = 2,
@@ -83,7 +83,7 @@ struct ADS1115settings {
 	};
 
 	/**
-	 * Requested gain
+	 * Requested full scale range
 	 **/
 	PGA pgaGain = FSR2_048;
 
@@ -98,19 +98,19 @@ struct ADS1115settings {
 	};
 
 	/**
-	 * Requested input channel (0 or 1)
+	 * Requested input channel (AIN0..AIN3)
 	 **/
 	Input channel = AIN0;
 
 	/**
-	 * If set to true the pigpio is initialised
+	 * If set to true the pigpio will be initialised
 	 **/
 	bool initPIGPIO = true;
 
 	/**
-	 * Default GPIO pin for data ready
+	 * GPIO pin connected to ALERT/RDY
 	 **/
-	int drdy_gpio = DEFAULT_DATA_READY_GPIO;
+	int drdy_gpio = DEFAULT_ALERT_RDY_TO_GPIO;
 };
 
 
@@ -121,13 +121,6 @@ struct ADS1115settings {
 class ADS1115rpi {
 
 public:
-	/**
-	 * Constructor with the spiDevice. The default device
-	 * is /dev/spidev0.0.
-	 * \param spiDevice The raw /dev spi device.
-	 **/
-	ADS1115rpi();
-
 	/**
 	 * Destructor which makes sure the data acquisition
 	 * has stopped.

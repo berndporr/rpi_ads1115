@@ -31,7 +31,7 @@ enum \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{P
 {\bfseries F\+S\+R0\+\_\+512} = 4, 
 {\bfseries F\+S\+R0\+\_\+256} = 5
  \}
-\begin{DoxyCompactList}\small\item\em Gains of the P\+GA. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Full scale range\+: 2.\+048V, 1.\+024V, 0.\+512V or 0.\+256V. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}\label{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}} 
 enum \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} \{ {\bfseries A\+I\+N0} = 0, 
 {\bfseries A\+I\+N1} = 1, 
@@ -53,16 +53,16 @@ uint8\+\_\+t \mbox{\hyperlink{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0
 \begin{DoxyCompactList}\small\item\em Sampling rate requested. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}\label{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}} 
 \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{P\+GA}} \mbox{\hyperlink{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}{pga\+Gain}} = F\+S\+R2\+\_\+048
-\begin{DoxyCompactList}\small\item\em Requested gain. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Requested full scale range. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}\label{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}} 
 \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} \mbox{\hyperlink{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}{channel}} = A\+I\+N0
-\begin{DoxyCompactList}\small\item\em Requested input channel (0 or 1) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Requested input channel (A\+I\+N0..A\+I\+N3) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_add939ea3e172fc3c52fe9e53b05a66e4}\label{structADS1115settings_add939ea3e172fc3c52fe9e53b05a66e4}} 
 bool \mbox{\hyperlink{structADS1115settings_add939ea3e172fc3c52fe9e53b05a66e4}{init\+P\+I\+G\+P\+IO}} = true
-\begin{DoxyCompactList}\small\item\em If set to true the pigpio is initialised. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em If set to true the pigpio will be initialised. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}\label{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}} 
-int \mbox{\hyperlink{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}{drdy\+\_\+gpio}} = D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+A\+D\+Y\+\_\+\+G\+P\+IO
-\begin{DoxyCompactList}\small\item\em Default G\+P\+IO pin for data ready. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \mbox{\hyperlink{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}{drdy\+\_\+gpio}} = D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+E\+R\+T\+\_\+\+R\+D\+Y\+\_\+\+T\+O\+\_\+\+G\+P\+IO
+\begin{DoxyCompactList}\small\item\em G\+P\+IO pin connected to A\+L\+E\+R\+T/\+R\+DY. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
