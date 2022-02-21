@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pigpio.h>
+#include <assert.h>
 
 #ifndef NDEBUG
 #define DEBUG
@@ -81,8 +82,6 @@ struct ADS1115settings {
 	 * Gains of the PGA
 	 **/
 	enum PGA {
-		FSR6_144 = 0,
-		FSR4_096 = 1,
 		FSR2_048 = 2,
 		FSR1_024 = 3,
 		FSR0_512 = 4,
@@ -173,10 +172,26 @@ private:
 
 	void i2c_writeWord(uint8_t reg, unsigned data);
         unsigned i2c_readWord(uint8_t reg);
+        int i2c_readConversion();
 
 	const int reg_config = 1;
 	const int reg_lo_thres = 2;
 	const int reg_hi_thres = 3;
+
+	float fullScaleVoltage() {
+		switch (ads1115settings.pgaGain) {
+		case ADS1115settings::FSR2_048:
+			return 2.048;
+		case ADS1115settings::FSR1_024:
+			return 1.024;
+		case ADS1115settings::FSR0_512:
+			return 0.512;
+		case ADS1115settings::FSR0_256:
+			return 0.256;
+		}
+		assert(1 == 0);
+		return 0;
+	}
 };
 
 

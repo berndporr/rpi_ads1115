@@ -23,7 +23,7 @@
 // screen.
 class ADS1115PrinterCallback : public ADS1115callback {
 	virtual void hasSample(float v) {
-		printf("v = %e\n",v);
+		printf("%e\n",v);
 	}
 };
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 	ADS1115PrinterCallback ads1115PrinterCallback;
 	ads1115rpi.setCallback(&ads1115PrinterCallback);
         ADS1115settings s;
-	s.samplingRate = ADS1115settings::FS8HZ;
+	s.samplingRate = ADS1115settings::FS64HZ;
 	ads1115rpi.start(s);
 	getchar();
 	ads1115rpi.stop();

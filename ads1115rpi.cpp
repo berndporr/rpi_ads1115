@@ -48,7 +48,7 @@ void ADS1115rpi::start(ADS1115settings settings) {
 }
 
 void ADS1115rpi::dataReady() {
-	float v = i2c_readWord(0);
+	float v = (float)i2c_readConversion() / (float)0x7fff * fullScaleVoltage() * 2;
 	if (ads1115callback) {
 		ads1115callback->hasSample(v);
 	}
@@ -106,4 +106,28 @@ unsigned ADS1115rpi::i2c_readWord(uint8_t reg)
         }
         i2cClose(fd);
         return (((unsigned)(tmp[0])) << 8) | ((unsigned)(tmp[1]));
+}
+
+int ADS1115rpi::i2c_readConversion()
+{
+	const int reg = 0;
+        int fd = i2cOpen(ads1115settings.i2c_bus, ads1115settings.address, 0);
+        if (fd < 0) {
+#ifdef DEBUG
+                fprintf(stderr,"Could not open %02x.\n",ads1115settings.address);
+#endif
+                throw could_not_open_i2c;
+        }
+        int r;
+	char tmp[2];
+        r = i2cReadI2CBlockData(fd, reg, tmp, 2);
+        if (r < 0) {
+#ifdef DEBUG
+                fprintf(stderr,"Could not read ADC value. ret=%d.\n",r);
+#endif
+                throw "Could not read from i2c.";
+        }
+        i2cClose(fd);
+	//        return (((int)(tmp[0])) << 8) | ((int)(tmp[1]));
+        return ((int)(tmp[0]) << 8) | (int)(tmp[1]);
 }
