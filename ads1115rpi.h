@@ -123,7 +123,7 @@ class ADS1115rpi {
 public:
 	/**
 	 * Destructor which makes sure the data acquisition
-	 * has stopped.
+	 * stops on exit.
 	 **/
 	~ADS1115rpi() {
 		stop();
@@ -133,7 +133,7 @@ public:
 	 * Called when a new sample is available.
 	 * This needs to be implemented in a derived
 	 * class by the client. Defined as abstract.
-	 * \param sample Voltage from the selected channel
+	 * \param sample Voltage from the selected channel.
 	 **/
 	virtual void hasSample(float sample) = 0;
 

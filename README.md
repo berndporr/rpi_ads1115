@@ -1,22 +1,22 @@
 # Data acquisition with the ADS1115 on the raspberry PI with callback handlers
 
-C++ realtime data acquisition with callback handling
-
 ![alt tag](ads1115.jpg)
 
 The ADS1115 a sigma delta converter which has
-differential inputs, a PGA and programmable sampling rate. It's
+differential inputs, a PGA and programmable sampling rate from 8Hz..860Hz. It's
 perfect for slowly changing inputs such as pressure, temperature,
 heart rate etc.
 
-This repo offers the class `ADS1115rpi` which does the low level
+This repo offers the class `ADS1115rpi` which manages the
 communication with the ADS1115. The user just needs to
 implement the callback `hasSample(float sample)` which is called
-at the given sampling rate.
+at the requested sampling rate.
 
 The class uses the ALERT/RDY of the ADS1115 connected to GPIO 17 to
 establish the sampling rate. The ADS1115 ALERT/RDY pin is configured
 that it triggers the callback after a sample has become available.
+GPIO17 must be connected to ALERT/RDY of the ADS1115 or to another
+GPIO pin if GPIO17 is already in use.
 
 ## Building:
 

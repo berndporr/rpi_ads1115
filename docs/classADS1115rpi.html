@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('classADS1115rpi.html',''); initResizab
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3dec47dc3242290468f21396df0d71a5"><td class="memItemLeft" align="right" valign="top"><a id="a3dec47dc3242290468f21396df0d71a5"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a3dec47dc3242290468f21396df0d71a5">~ADS1115rpi</a> ()</td></tr>
-<tr class="memdesc:a3dec47dc3242290468f21396df0d71a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor which makes sure the data acquisition has stopped. <br /></td></tr>
+<tr class="memdesc:a3dec47dc3242290468f21396df0d71a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor which makes sure the data acquisition stops on exit. <br /></td></tr>
 <tr class="separator:a3dec47dc3242290468f21396df0d71a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a515633c671efe89d43b814d4682440af"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a515633c671efe89d43b814d4682440af">hasSample</a> (float sample)=0</td></tr>
 <tr class="memdesc:a515633c671efe89d43b814d4682440af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a new sample is available.  <a href="classADS1115rpi.html#a515633c671efe89d43b814d4682440af">More...</a><br /></td></tr>
@@ -144,7 +144,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Called when a new sample is available. </p>
 <p>This needs to be implemented in a derived class by the client. Defined as abstract. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sample</td><td>Voltage from the selected channel </td></tr>
+    <tr><td class="paramname">sample</td><td>Voltage from the selected channel. </td></tr>
   </table>
   </dd>
 </dl>

@@ -14,7 +14,7 @@ This class reads data from the A\+D\+S1115 in the background (separate thread) a
 \item 
 \mbox{\Hypertarget{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}\label{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}} 
 \mbox{\hyperlink{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}{$\sim$\+A\+D\+S1115rpi}} ()
-\begin{DoxyCompactList}\small\item\em Destructor which makes sure the data acquisition has stopped. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destructor which makes sure the data acquisition stops on exit. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classADS1115rpi_a515633c671efe89d43b814d4682440af}{has\+Sample}} (float sample)=0
 \begin{DoxyCompactList}\small\item\em Called when a new sample is available. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{set\+Channel}} (\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{A\+D\+S1115settings\+::\+Input}} channel)
@@ -42,7 +42,7 @@ Called when a new sample is available.
 
 This needs to be implemented in a derived class by the client. Defined as abstract. 
 \begin{DoxyParams}{Parameters}
-{\em sample} & Voltage from the selected channel \\
+{\em sample} & Voltage from the selected channel. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}\label{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}} 
