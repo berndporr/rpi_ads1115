@@ -21,7 +21,7 @@
 
 // Handler which receives the data and prints it on the
 // screen.
-class ADS1115PrinterCallback : public ADS1115callback {
+class ADS1115Printer : public ADS1115rpi {
 	virtual void hasSample(float v) {
 		printf("%e\n",v);
 	}
@@ -31,9 +31,7 @@ class ADS1115PrinterCallback : public ADS1115callback {
 // Registers the callback.
 // Prints data till the user presses a key.
 int main(int argc, char *argv[]) {
-	ADS1115rpi ads1115rpi;
-	ADS1115PrinterCallback ads1115PrinterCallback;
-	ads1115rpi.setCallback(&ads1115PrinterCallback);
+	ADS1115Printer ads1115rpi;
         ADS1115settings s;
 	s.samplingRate = ADS1115settings::FS64HZ;
 	ads1115rpi.start(s);
