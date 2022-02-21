@@ -30,6 +30,7 @@ class ADS1115Printer : public ADS1115rpi {
 // Creates an instance of the ADS1115Printer class.
 // Prints data till the user presses a key.
 int main(int argc, char *argv[]) {
+	fprintf(stderr,"Press any key to stop.\n");
 	ADS1115Printer ads1115rpi;
         ADS1115settings s;
 	s.samplingRate = ADS1115settings::FS64HZ;
