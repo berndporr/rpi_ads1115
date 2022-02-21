@@ -85,11 +85,11 @@ $(document).ready(function(){initNavTree('classADS1115rpi.html',''); initResizab
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classADS1115rpi-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ADS1115rpi Class Reference</div>  </div>
+<div class="title">ADS1115rpi Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This class reads data from the AD7705 in the background (separate thread) and calls a callback function whenever data is available.  
+<p>This class reads data from the ADS1115 in the background (separate thread) and calls a callback function whenever data is available.  
  <a href="classADS1115rpi.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>&gt;</code></p>
@@ -103,9 +103,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a3dec47dc3242290468f21396df0d71a5">~ADS1115rpi</a> ()</td></tr>
 <tr class="memdesc:a3dec47dc3242290468f21396df0d71a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor which makes sure the data acquisition has stopped. <br /></td></tr>
 <tr class="separator:a3dec47dc3242290468f21396df0d71a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd6ec3fe04d2cda3668327373cb4a002"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#afd6ec3fe04d2cda3668327373cb4a002">setCallback</a> (<a class="el" href="classADS1115callback.html">ADS1115callback</a> *cb)</td></tr>
-<tr class="memdesc:afd6ec3fe04d2cda3668327373cb4a002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback which is called whenever there is a sample.  <a href="classADS1115rpi.html#afd6ec3fe04d2cda3668327373cb4a002">More...</a><br /></td></tr>
-<tr class="separator:afd6ec3fe04d2cda3668327373cb4a002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515633c671efe89d43b814d4682440af"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a515633c671efe89d43b814d4682440af">hasSample</a> (float sample)=0</td></tr>
+<tr class="memdesc:a515633c671efe89d43b814d4682440af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a new sample is available.  <a href="classADS1115rpi.html#a515633c671efe89d43b814d4682440af">More...</a><br /></td></tr>
+<tr class="separator:a515633c671efe89d43b814d4682440af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f36d0cca6cbec106b5a626d9973e091"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">setChannel</a> (<a class="el" href="structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d">ADS1115settings::Input</a> channel)</td></tr>
+<tr class="memdesc:a4f36d0cca6cbec106b5a626d9973e091"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects a different channel at the multiplexer while running.  <a href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">More...</a><br /></td></tr>
+<tr class="separator:a4f36d0cca6cbec106b5a626d9973e091"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a401e626b6afed688a9b0518c0316b2a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">start</a> (<a class="el" href="structADS1115settings.html">ADS1115settings</a> settings=<a class="el" href="structADS1115settings.html">ADS1115settings</a>())</td></tr>
 <tr class="memdesc:a401e626b6afed688a9b0518c0316b2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the data acquisition in the background and the callback is called with new samples.  <a href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">More...</a><br /></td></tr>
 <tr class="separator:a401e626b6afed688a9b0518c0316b2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,7 +118,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a910b9735f8bef69a0844a821fda06baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class reads data from the AD7705 in the background (separate thread) and calls a callback function whenever data is available. </p>
+<div class="textblock"><p>This class reads data from the ADS1115 in the background (separate thread) and calls a callback function whenever data is available. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7d9a75ff1f1ada74389791ff2b0d62db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7d9a75ff1f1ada74389791ff2b0d62db">&#9670;&nbsp;</a></span>ADS1115rpi()</h2>
@@ -143,29 +146,53 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afd6ec3fe04d2cda3668327373cb4a002"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd6ec3fe04d2cda3668327373cb4a002">&#9670;&nbsp;</a></span>setCallback()</h2>
+<a id="a515633c671efe89d43b814d4682440af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515633c671efe89d43b814d4682440af">&#9670;&nbsp;</a></span>hasSample()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ADS1115rpi::hasSample </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>sample</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when a new sample is available. </p>
+<p>This needs to be implemented in a derived class by the client. Defined as abstract. </p>
+
+</div>
+</div>
+<a id="a4f36d0cca6cbec106b5a626d9973e091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f36d0cca6cbec106b5a626d9973e091">&#9670;&nbsp;</a></span>setChannel()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ADS1115rpi::setCallback </td>
+          <td class="memname">void ADS1115rpi::setChannel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classADS1115callback.html">ADS1115callback</a> *&#160;</td>
-          <td class="paramname"><em>cb</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d">ADS1115settings::Input</a>&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the callback which is called whenever there is a sample. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cb</td><td>Pointer to the callback interface. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Selects a different channel at the multiplexer while running. </p>
+<p>Call this in the callback handler <a class="el" href="classADS1115rpi.html#a515633c671efe89d43b814d4682440af" title="Called when a new sample is available.">hasSample()</a> to cycle through different channels. </p>
 
 </div>
 </div>

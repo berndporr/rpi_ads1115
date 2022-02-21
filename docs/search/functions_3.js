@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eads1115rpi_27',['~ADS1115rpi',['../classADS1115rpi.html#a3dec47dc3242290468f21396df0d71a5',1,'ADS1115rpi']]]
+  ['_7eads1115rpi_25',['~ADS1115rpi',['../classADS1115rpi.html#a3dec47dc3242290468f21396df0d71a5',1,'ADS1115rpi']]]
 ];
