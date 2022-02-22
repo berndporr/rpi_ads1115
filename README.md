@@ -1,20 +1,19 @@
-# Data acquisition with the ADS1115 on the raspberry PI with callback handlers
+# Data acquisition with the ADS1115 on the Raspberry PI with callback handlers
 
 ![alt tag](ads1115.jpg)
 
-The ADS1115 a sigma delta converter which has
-differential inputs, a PGA and programmable sampling rate from 8Hz..860Hz. It's
-perfect for slowly changing inputs such as pressure, temperature,
-heart rate etc.
+The ADS1115 is a sigma delta converter which has a PGA and a
+programmable sampling rate from 8Hz..860Hz. It's perfect for slowly
+changing inputs such as pressure, temperature, heart rate etc.
 
 This repo offers the class `ADS1115rpi` which manages the
-communication with the ADS1115. The user just needs to
-implement the callback `hasSample(float sample)` which is called
+communication between the ADS1115 and the client who just needs to
+implement the callback `hasSample(float sample)` which is then called
 at the requested sampling rate.
 
-The class uses the ALERT/RDY of the ADS1115 connected to GPIO 17 to
-establish the sampling rate. The ADS1115 ALERT/RDY pin is configured
-that it triggers the callback after a sample has become available.
+The class uses the ALERT/RDY pin of the ADS1115 connected to GPIO 17
+to establish the sampling rate.
+
 
 ## Building:
 
@@ -40,17 +39,16 @@ the ADC data to the screen or you can pipe it into a file.
 
 The online doc is here: https://berndporr.github.io/rpi_ads1115/
 
-You need to implement a callback handler:
-```
-virtual void hasSample(float v) {
-};
-```
+You need to overload the abstract callback handler: ``` virtual void
+hasSample(float v) { }; ``` with the functionality you'd like it to
+do. You can switch the input channel within the callback handler to cycle
+through different inputs.
 
 Start the data acquisition:
 ```
 myAD7705comm.start(settings)
 ```
-once `start` has been called `hasSample` will be called at the
+Once `start` has been called `hasSample` will be called at the
 specified sampling rate.
 
 Stop the data acquisition:
