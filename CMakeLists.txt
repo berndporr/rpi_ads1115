@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
@@ -11,7 +11,7 @@ include(GNUInstallDirs)
 
 add_subdirectory(example)
 
-# add_compile_options(-Wall -Wconversion -Wextra -pedantic)
+add_compile_options(-Wall -Wconversion -Wextra -pedantic)
 
 set(LIBSRC ads1115rpi.cpp)
 set(LIBINCLUDE ads1115rpi.h)

@@ -163,7 +163,7 @@ private:
 
 	void dataReady();
 
-	static void gpioISR(int gpio, int level, uint32_t tick, void* userdata) {
+	static void gpioISR(int, int, uint32_t, void* userdata) {
 		((ADS1115rpi*)userdata)->dataReady();
 	}
 
@@ -171,20 +171,20 @@ private:
         unsigned i2c_readWord(uint8_t reg);
         int i2c_readConversion();
 
-	const int reg_config = 1;
-	const int reg_lo_thres = 2;
-	const int reg_hi_thres = 3;
+	const uint8_t reg_config = 1;
+	const uint8_t reg_lo_thres = 2;
+	const uint8_t reg_hi_thres = 3;
 
 	float fullScaleVoltage() {
 		switch (ads1115settings.pgaGain) {
 		case ADS1115settings::FSR2_048:
-			return 2.048;
+			return 2.048f;
 		case ADS1115settings::FSR1_024:
-			return 1.024;
+			return 1.024f;
 		case ADS1115settings::FSR0_512:
-			return 0.512;
+			return 0.512f;
 		case ADS1115settings::FSR0_256:
-			return 0.256;
+			return 0.256f;
 		}
 		assert(1 == 0);
 		return 0;
