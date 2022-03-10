@@ -5,6 +5,8 @@
 
 Window::Window()
 {
+	ads1115 = new ADS1115(this);
+	
 	// set up the thermometer
 	thermo = new QwtThermo; 
 	thermo->setFillBrush( QBrush(Qt::red) );
@@ -45,6 +47,22 @@ Window::Window()
 	setLayout(hLayout);
 }
 
+
+void Window::startDAQ() {
+	ADS1115settings s;
+	s.samplingRate = ADS1115settings::FS64HZ;
+	ads1115->start(s);
+	// call the timerEvent function every 40 ms to refresh the screen
+	startTimer(40);
+	}
+
+Window::~Window() {
+	ads1115->stop();
+	delete ads1115;
+}
+
+
+
 void Window::reset() {
 	// set up the initial plot data
 	for( int index=0; index<plotDataSize; ++index )
@@ -55,17 +73,16 @@ void Window::reset() {
 }
 
 
-void Window::timerEvent( QTimerEvent * )
-{
-	double inVal = gain * sin( M_PI * count/50.0 );
-	++count;
-
+void Window::addSample( float v ) {
 	// add the new input to the plot
 	memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
-	yData[plotDataSize-1] = inVal;
+	yData[plotDataSize-1] = v;
 	curve->setSamples(xData, yData, plotDataSize);
-	plot->replot();
+}
 
-	// set the thermometer value
-	thermo->setValue( fabs(inVal) );
+
+void Window::timerEvent( QTimerEvent * )
+{
+	plot->replot();
+	thermo->setValue( yData[0] );
 }

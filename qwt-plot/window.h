@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "ads1115rpi.h"
+
 #include <qwt/qwt_thermo.h>
 #include <qwt/qwt_plot.h>
 #include <qwt/qwt_plot_curve.h>
@@ -14,10 +16,34 @@ class Window : public QWidget
 	// must include the Q_OBJECT macro for for the Qt signals/slots framework to work with this class
 	Q_OBJECT
 
-public:
-	Window(); // default constructor - called when a Window is declared without arguments
+private:
 
-	void timerEvent( QTimerEvent * );
+	class ADS1115 : public ADS1115rpi {
+	public:
+		ADS1115(Window* w) : window(w) {}
+		virtual void hasSample(float v) {
+			window->addSample(v);
+		}
+	private:
+		Window* window;
+	};
+
+	
+public:
+	/**
+	 * Initialises the GUI and sets up the ADC
+	 **/
+	Window();
+
+	/**
+	 * Starts data acquisition and screen refreshing
+	 **/
+	void startDAQ();
+
+	/**
+	 * Shuts down data acquisition
+	 **/
+	~Window();
 
 // internal variables for the window class
 private:
@@ -37,9 +63,13 @@ private:
 	double xData[plotDataSize];
 	double yData[plotDataSize];
 
-	long count = 0;
-
 	void reset();
+
+	void addSample(float v);
+
+	void timerEvent( QTimerEvent * );
+
+	ADS1115* ads1115;
 };
 
 #endif // WINDOW_H

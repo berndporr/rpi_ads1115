@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
 	Window window;
 	window.show();
 
+	window.startDAQ();
+
 	// call the window.timerEvent function every 40 ms
 	window.startTimer(40);
 

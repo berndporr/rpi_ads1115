@@ -18,3 +18,4 @@ add_executable(ads1115plotter
 
 target_link_libraries(ads1115plotter Qt5::Widgets)
 target_link_libraries(ads1115plotter qwt-qt5)
+target_link_libraries(ads1115plotter ads1115rpi)
