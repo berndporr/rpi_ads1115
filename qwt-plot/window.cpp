@@ -77,12 +77,13 @@ void Window::addSample( float v ) {
 	// add the new input to the plot
 	memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
 	yData[plotDataSize-1] = v;
-	curve->setSamples(xData, yData, plotDataSize);
 }
 
 
 void Window::timerEvent( QTimerEvent * )
 {
+	curve->setSamples(xData, yData, plotDataSize);
 	plot->replot();
 	thermo->setValue( yData[0] );
+	update();
 }
