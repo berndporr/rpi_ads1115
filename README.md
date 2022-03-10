@@ -27,16 +27,15 @@ To build:
 
     sudo make install
 
-## Usage example
+## Usage examples
 
-In the subdir `example` is a simple application which prints
+Data printer: In the subdir `example` is a simple application which prints
 the ADC data to the screen or you can pipe it into a file.
 
     cd example
     sudo ./ads1115_printer
 
-In the subdir `qwt-plot` is a simple QT plotting application
-plotting channel 0.
+Data plotter: In the subdir `qwt-plot` is a simple QT plotting application.
 
 ## General usage
 
