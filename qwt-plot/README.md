@@ -21,5 +21,5 @@ Make sure that you have installed the ads1115 library.
 ## Run it
 
 ```
-    ./ads1115plotter
+    sudo ./ads1115plotter
 ```
