@@ -20,12 +20,12 @@ private:
 
 	class ADS1115 : public ADS1115rpi {
 	public:
-		ADS1115(Window* w) : window(w) {}
+		ADS1115(Window* w) : window(*w) {}
 		virtual void hasSample(float v) {
-			window->addSample(v);
+			window.addSample(v);
 		}
 	private:
-		Window* window;
+		Window& window;
 	};
 
 	
