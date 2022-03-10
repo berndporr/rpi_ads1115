@@ -35,6 +35,9 @@ the ADC data to the screen or you can pipe it into a file.
     cd example
     sudo ./ads1115_printer
 
+In the subdir `qwt-plot` is a simple QT plotting application
+plotting channel 0.
+
 ## General usage
 
 The online doc is here: https://berndporr.github.io/rpi_ads1115/
