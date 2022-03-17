@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
         ADS1115settings s;
 	s.samplingRate = ADS1115settings::FS64HZ;
 	ads1115rpi.start(s);
+        fprintf(stderr,"fs = %d\n",ads1115rpi.getADS1115settings().getSamplingRate());
 	getchar();
 	ads1115rpi.stop();
 	return 0;
