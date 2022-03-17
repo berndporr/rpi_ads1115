@@ -68,9 +68,16 @@ struct ADS1115settings {
 	};
 	
 	/**
-	 * Enum to fs
+	 * Sampling rate enum to numerical fs
 	 **/
 	static constexpr unsigned SamplingRateEnum2Value[8] = {8,16,32,64,128,250,475,860};
+
+	/**
+	 * Get the sampling rate in Hz
+	 **/
+	inline unsigned getSampligRate() const {
+		return SamplingRateEnum2Value[samplingRate];
+	}
 
 	/**
 	 * Sampling rate requested
