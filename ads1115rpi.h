@@ -66,6 +66,11 @@ struct ADS1115settings {
 		FS475HZ = 6,
 		FS860HZ = 7
 	};
+	
+	/**
+	 * Enum to fs
+	 **/
+	static constexpr unsigned SamplingRateEnum2Value[8] = {8,16,32,64,128,250,475,860};
 
 	/**
 	 * Sampling rate requested
@@ -152,6 +157,13 @@ public:
 	 * \param settings A struct with the settings.
 	 **/
 	void start(ADS1115settings settings = ADS1115settings() );
+
+	/**
+	 * Returns the current settings
+	 **/
+	ADS1115settings getADS1115settings() const {
+		return ads1115settings;
+	}
 
 	/**
 	 * Stops the data acquistion
