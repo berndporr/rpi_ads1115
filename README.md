@@ -51,14 +51,22 @@ hasSample(float v) { }; ``` with the functionality you'd like it to
 do. You can switch the input channel within the callback handler to cycle
 through different inputs.
 
-Start the data acquisition:
+### Start the data acquisition:
 ```
 myAD7705comm.start(settings)
 ```
+
+### Receiving data
 Once `start` has been called `hasSample` will be called at the
 specified sampling rate.
 
-Stop the data acquisition:
+You can switch to another channel inside the callback handler by
+calling `setChannel (ADS1115settings::Input channel)` and then cycle
+through the channels. You might need to let the ADC settle to the
+next channel so it's recommended to read every channel twice and
+then discard the 1st callback event after having switched the channel.
+
+### Stop the data acquisition:
 ```
 myAD7705comm.stop();
 ```
