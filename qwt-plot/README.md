@@ -5,7 +5,7 @@
 Install the QT5 and Qwt development packages:
 
 ```
-    apt-get install qtdeclarative5-dev-tools
+    apt-get install qtdeclarative5-dev
     apt-get install libqwt-qt5-dev
 ```
 

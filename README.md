@@ -14,6 +14,11 @@ at the requested sampling rate.
 The class uses the ALERT/RDY pin of the ADS1115 connected to GPIO 17
 to establish the sampling rate.
 
+## Prerequisites
+
+    apt-get install cmake
+    apg-get install libpigpio-dev
+
 
 ## Building:
 
