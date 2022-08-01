@@ -17,7 +17,7 @@ to establish the sampling rate.
 ## Prerequisites
 
     apt-get install cmake
-    apg-get install libpigpio-dev
+    apt-get install libpigpio-dev
 
 
 ## Building:
