@@ -25,7 +25,7 @@ set_target_properties(ads1115rpi PROPERTIES
   SOVERSION 1
   PUBLIC_HEADER "${LIBINCLUDE}")
 
-target_link_libraries(ads1115rpi pigpio)
+target_link_libraries(ads1115rpi gpiod)
 
 install(TARGETS ads1115rpi EXPORT ads1115rpi-targets
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -42,7 +42,7 @@ add_library(ads1115rpi_static
 set_target_properties(ads1115rpi_static PROPERTIES
   PUBLIC_HEADER "${LIBINCLUDE}")
 
-target_link_libraries(ads1115rpi_static pigpio)
+target_link_libraries(ads1115rpi_static gpiod)
 
 install(TARGETS ads1115rpi_static EXPORT ads1115rpi_static-targets
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

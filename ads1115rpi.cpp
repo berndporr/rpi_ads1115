@@ -1,24 +1,35 @@
 #include "ads1115rpi.h"
 
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+
+
 void ADS1115rpi::start(ADS1115settings settings) {
 	ads1115settings = settings;
 
-	if (settings.initPIGPIO) {
-                int cfg = gpioCfgGetInternals();
-                cfg |= PI_CFG_NOSIGHANDLER;
-                gpioCfgSetInternals(cfg);
-                int r = gpioInitialise();
-                if (r < 0) {
-                        char msg[] = "Cannot init pigpio.";
+	char gpioFilename[20];
+	snprintf(gpioFilename, 19, "/dev/i2c-%d", settings.i2c_bus);
+	fdDRDY = open(gpioFilename, O_RDWR);
+	if (fdDRDY < 0) {
+	    char i2copen[] = "Could not open I2C.\n";
 #ifdef DEBUG
-                        fprintf(stderr,"%s\n",msg);
+	    fprintf(stderr,i2open);
 #endif
-                        throw msg;
-                }
-        }
-
+	    throw i2copen;
+	}
+	
+	if (ioctl(fdDRDY, I2C_SLAVE, settings.address) < 0) {
+	    char i2cslave[] = "Could not access I2C adress.\n";
 #ifdef DEBUG
-	fprintf(stderr,"Init .\n");
+	    fprintf(stderr,i2cslave);
+#endif
+	    throw i2cslave;
+	}
+	
+#ifdef DEBUG
+	fprintf(stderr,"Init.\n");
 #endif
 	// Enable RDY
 	i2c_writeWord(reg_lo_thres, 0x0000);
@@ -34,10 +45,21 @@ void ADS1115rpi::start(ADS1115settings settings) {
 #ifdef DEBUG
 	fprintf(stderr,"Receiving data.\n");
 #endif
-	
-        gpioSetMode(settings.drdy_gpio,PI_INPUT);
-        gpioSetISRFuncEx(settings.drdy_gpio,RISING_EDGE,ISR_TIMEOUT,gpioISR,(void*)this);
 
+	chipDRDY = gpiod_chip_open_by_number(settings.drdy_chip);
+	lineDRDY = gpiod_chip_get_line(chipDRDY,settings.drdy_gpio);
+
+	int ret = gpiod_line_request_rising_edge_events(lineDRDY, "Consumer");
+	if (ret < 0) {
+#ifdef DEBUG
+		perror("Request event notification failed.\n");
+#endif
+		throw "Could not request event for IRQ.";
+	}
+
+	running = true;
+
+	thr = std::thread(&ADS1115rpi::worker,this);
 }
 
 
@@ -57,78 +79,58 @@ void ADS1115rpi::dataReady() {
 
 
 void ADS1115rpi::stop() {
-	gpioSetISRFuncEx(ads1115settings.drdy_gpio,RISING_EDGE,-1,NULL,(void*)this);
-        if (ads1115settings.initPIGPIO) {
-                gpioTerminate();
-        }
+    if (!running) return;
+    running = false;
+    thr.join();
+    gpiod_line_release(lineDRDY);
+    gpiod_chip_close(chipDRDY);
+    close(fdDRDY);
 }
 
 
 // i2c read and write protocols
 void ADS1115rpi::i2c_writeWord(uint8_t reg, unsigned data)
 {
-        int fd = i2cOpen(ads1115settings.i2c_bus, ads1115settings.address, 0);
-        if (fd < 0) {
-#ifdef DEBUG
-                fprintf(stderr,"Could not open %02x.\n",ads1115settings.address);
-#endif
-                throw could_not_open_i2c;
-        }
-	char tmp[2];
-	tmp[0] = (char)((data & 0xff00) >> 8);
-	tmp[1] = (char)(data & 0x00ff);
-	int r = i2cWriteI2CBlockData(fd, reg, tmp, 2);
+	uint8_t tmp[3];
+	tmp[0] = reg;
+	tmp[1] = (char)((data & 0xff00) >> 8);
+	tmp[2] = (char)(data & 0x00ff);
+	long int r = write(fdDRDY,&tmp,3);
         if (r < 0) {
 #ifdef DEBUG
                 fprintf(stderr,"Could not write word from %02x. ret=%d.\n",ads1115settings.address,r);
 #endif
-                throw "Could not read from i2c.";
+                throw "Could not write to i2c.";
         }
-        i2cClose(fd);
 }
 
 unsigned ADS1115rpi::i2c_readWord(uint8_t reg)
 {
-        int fd = i2cOpen(ads1115settings.i2c_bus, ads1115settings.address, 0);
-        if (fd < 0) {
-#ifdef DEBUG
-                fprintf(stderr,"Could not open %02x.\n",ads1115settings.address);
-#endif
-                throw could_not_open_i2c;
-        }
-        int r;
-	char tmp[2];
-        r = i2cReadI2CBlockData(fd, reg, tmp, 2);
+	uint8_t tmp[2];
+	tmp[0] = reg;
+	write(fdDRDY,&tmp,1);
+        long int r = read(fdDRDY, tmp, 2);
         if (r < 0) {
 #ifdef DEBUG
                 fprintf(stderr,"Could not read word from %02x. ret=%d.\n",ads1115settings.address,r);
 #endif
                 throw "Could not read from i2c.";
         }
-        i2cClose(fd);
         return (((unsigned)(tmp[0])) << 8) | ((unsigned)(tmp[1]));
 }
 
 int ADS1115rpi::i2c_readConversion()
 {
 	const int reg = 0;
-        int fd = i2cOpen(ads1115settings.i2c_bus, ads1115settings.address, 0);
-        if (fd < 0) {
-#ifdef DEBUG
-                fprintf(stderr,"Could not open %02x.\n",ads1115settings.address);
-#endif
-                throw could_not_open_i2c;
-        }
-        int r;
-	char tmp[2];
-        r = i2cReadI2CBlockData(fd, reg, tmp, 2);
+	char tmp[3];
+	tmp[0] = reg;
+	write(fdDRDY,&tmp,1);
+        long int r = read(fdDRDY, tmp, 2);
         if (r < 0) {
 #ifdef DEBUG
                 fprintf(stderr,"Could not read ADC value. ret=%d.\n",r);
 #endif
                 throw "Could not read from i2c.";
         }
-        i2cClose(fd);
-	//        return (((int)(tmp[0])) << 8) | ((int)(tmp[1]));
         return ((int)(tmp[0]) << 8) | (int)(tmp[1]);
 }

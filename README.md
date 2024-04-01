@@ -17,7 +17,7 @@ to establish the sampling rate.
 ## Prerequisites
 
     apt-get install cmake
-    apt-get install libpigpio-dev
+    apt-get install libgpiod-dev
 
 
 ## Building:
@@ -38,7 +38,7 @@ Data printer: In the subdir `example` is a simple application which prints
 the ADC data to the screen or you can pipe it into a file.
 
     cd example
-    sudo ./ads1115_printer
+    ./ads1115_printer
 
 Data plotter: In the subdir `qwt-plot` is a simple QT plotting application.
 
