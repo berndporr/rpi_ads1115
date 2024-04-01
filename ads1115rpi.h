@@ -219,7 +219,7 @@ private:
 
     std::thread thr;
 
-    int fdDRDY = -1;
+    int fd_i2c = -1;
 
     bool running = false;
 };

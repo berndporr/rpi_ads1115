@@ -11,8 +11,8 @@ void ADS1115rpi::start(ADS1115settings settings) {
 
 	char gpioFilename[20];
 	snprintf(gpioFilename, 19, "/dev/i2c-%d", settings.i2c_bus);
-	fdDRDY = open(gpioFilename, O_RDWR);
-	if (fdDRDY < 0) {
+	fd_i2c = open(gpioFilename, O_RDWR);
+	if (fd_i2c < 0) {
 	    char i2copen[] = "Could not open I2C.\n";
 #ifdef DEBUG
 	    fprintf(stderr,i2open);
@@ -20,7 +20,7 @@ void ADS1115rpi::start(ADS1115settings settings) {
 	    throw i2copen;
 	}
 	
-	if (ioctl(fdDRDY, I2C_SLAVE, settings.address) < 0) {
+	if (ioctl(fd_i2c, I2C_SLAVE, settings.address) < 0) {
 	    char i2cslave[] = "Could not access I2C adress.\n";
 #ifdef DEBUG
 	    fprintf(stderr,i2cslave);
@@ -84,7 +84,7 @@ void ADS1115rpi::stop() {
     thr.join();
     gpiod_line_release(lineDRDY);
     gpiod_chip_close(chipDRDY);
-    close(fdDRDY);
+    close(fd_i2c);
 }
 
 
@@ -95,7 +95,7 @@ void ADS1115rpi::i2c_writeWord(uint8_t reg, unsigned data)
 	tmp[0] = reg;
 	tmp[1] = (char)((data & 0xff00) >> 8);
 	tmp[2] = (char)(data & 0x00ff);
-	long int r = write(fdDRDY,&tmp,3);
+	long int r = write(fd_i2c,&tmp,3);
         if (r < 0) {
 #ifdef DEBUG
                 fprintf(stderr,"Could not write word from %02x. ret=%d.\n",ads1115settings.address,r);
@@ -108,8 +108,8 @@ unsigned ADS1115rpi::i2c_readWord(uint8_t reg)
 {
 	uint8_t tmp[2];
 	tmp[0] = reg;
-	write(fdDRDY,&tmp,1);
-        long int r = read(fdDRDY, tmp, 2);
+	write(fd_i2c,&tmp,1);
+        long int r = read(fd_i2c, tmp, 2);
         if (r < 0) {
 #ifdef DEBUG
                 fprintf(stderr,"Could not read word from %02x. ret=%d.\n",ads1115settings.address,r);
@@ -124,8 +124,8 @@ int ADS1115rpi::i2c_readConversion()
 	const int reg = 0;
 	char tmp[3];
 	tmp[0] = reg;
-	write(fdDRDY,&tmp,1);
-        long int r = read(fdDRDY, tmp, 2);
+	write(fd_i2c,&tmp,1);
+        long int r = read(fd_i2c, tmp, 2);
         if (r < 0) {
 #ifdef DEBUG
                 fprintf(stderr,"Could not read ADC value. ret=%d.\n",r);
