@@ -47,14 +47,14 @@ void ADS1115rpi::start(ADS1115settings settings) {
 #endif
 
 	chipDRDY = gpiod_chip_open_by_number(settings.drdy_chip);
-	lineDRDY = gpiod_chip_get_line(chipDRDY,settings.drdy_gpio);
+	pinDRDY = gpiod_chip_get_line(chipDRDY,settings.drdy_gpio);
 
-	int ret = gpiod_line_request_rising_edge_events(lineDRDY, "Consumer");
+	int ret = gpiod_line_request_rising_edge_events(pinDRDY, "Consumer");
 	if (ret < 0) {
 #ifdef DEBUG
-		perror("Request event notification failed.\n");
+	    fprintf(stderr,"Request event notification failed on pin %d and chip %d.\n",settings.drdy_chip,settings.drdy_gpio);
 #endif
-		throw "Could not request event for IRQ.";
+	    throw "Could not request event for IRQ.";
 	}
 
 	running = true;
@@ -78,11 +78,22 @@ void ADS1115rpi::dataReady() {
 }
 
 
+void ADS1115rpi::worker() {
+    while (running) {
+	const struct timespec ts = { 1, 0 };
+	gpiod_line_event_wait(pinDRDY, &ts);
+	struct gpiod_line_event event;
+	gpiod_line_event_read(pinDRDY, &event);
+	dataReady();
+    }
+}
+
+
 void ADS1115rpi::stop() {
     if (!running) return;
     running = false;
     thr.join();
-    gpiod_line_release(lineDRDY);
+    gpiod_line_release(pinDRDY);
     gpiod_chip_close(chipDRDY);
     close(fd_i2c);
 }

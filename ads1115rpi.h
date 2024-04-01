@@ -181,15 +181,7 @@ private:
 
     void dataReady();
 
-    void worker() {
-	while (running) {
-	    const struct timespec ts = { 1, 0 };
-	    gpiod_line_event_wait(lineDRDY, &ts);
-	    struct gpiod_line_event event;
-	    gpiod_line_event_read(lineDRDY, &event);
-	    dataReady();
-	}
-    }
+    void worker();
 
     void i2c_writeWord(uint8_t reg, unsigned data);
     unsigned i2c_readWord(uint8_t reg);
@@ -214,8 +206,8 @@ private:
 	return 0;
     }
 
-    struct gpiod_chip *chipDRDY;
-    struct gpiod_line *lineDRDY;
+    struct gpiod_chip *chipDRDY = nullptr;
+    struct gpiod_line *pinDRDY = nullptr;
 
     std::thread thr;
 
