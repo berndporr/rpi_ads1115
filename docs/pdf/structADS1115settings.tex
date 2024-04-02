@@ -1,8 +1,8 @@
-\hypertarget{structADS1115settings}{}\doxysection{A\+D\+S1115settings Struct Reference}
+\hypertarget{structADS1115settings}{}\doxysection{ADS1115settings Struct Reference}
 \label{structADS1115settings}\index{ADS1115settings@{ADS1115settings}}
 
 
-A\+D\+S1115 initial settings when starting the device.  
+ADS1115 initial settings when starting the device.  
 
 
 
@@ -14,31 +14,37 @@ A\+D\+S1115 initial settings when starting the device.
 \item 
 \mbox{\Hypertarget{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}\label{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}} 
 enum \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{Sampling\+Rates}} \{ \newline
-{\bfseries F\+S8\+HZ} = 0, 
-{\bfseries F\+S16\+HZ} = 1, 
-{\bfseries F\+S32\+HZ} = 2, 
-{\bfseries F\+S64\+HZ} = 3, 
-\newline
-{\bfseries F\+S128\+HZ} = 4, 
-{\bfseries F\+S250\+HZ} = 5, 
-{\bfseries F\+S475\+HZ} = 6, 
-{\bfseries F\+S860\+HZ} = 7
+{\bfseries FS8\+HZ} = 0
+, {\bfseries FS16\+HZ} = 1
+, {\bfseries FS32\+HZ} = 2
+, {\bfseries FS64\+HZ} = 3
+, \newline
+{\bfseries FS128\+HZ} = 4
+, {\bfseries FS250\+HZ} = 5
+, {\bfseries FS475\+HZ} = 6
+, {\bfseries FS860\+HZ} = 7
  \}
 \begin{DoxyCompactList}\small\item\em Sampling rates. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a831970032a15754ead970931dd25ac5f}\label{structADS1115settings_a831970032a15754ead970931dd25ac5f}} 
-enum \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{P\+GA}} \{ {\bfseries F\+S\+R2\+\_\+048} = 2, 
-{\bfseries F\+S\+R1\+\_\+024} = 3, 
-{\bfseries F\+S\+R0\+\_\+512} = 4, 
-{\bfseries F\+S\+R0\+\_\+256} = 5
+enum \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{PGA}} \{ {\bfseries FSR2\+\_\+048} = 2
+, {\bfseries FSR1\+\_\+024} = 3
+, {\bfseries FSR0\+\_\+512} = 4
+, {\bfseries FSR0\+\_\+256} = 5
  \}
 \begin{DoxyCompactList}\small\item\em Full scale range\+: 2.\+048V, 1.\+024V, 0.\+512V or 0.\+256V. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}\label{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}} 
-enum \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} \{ {\bfseries A\+I\+N0} = 0, 
-{\bfseries A\+I\+N1} = 1, 
-{\bfseries A\+I\+N2} = 2, 
-{\bfseries A\+I\+N3} = 3
+enum \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} \{ {\bfseries AIN0} = 0
+, {\bfseries AIN1} = 1
+, {\bfseries AIN2} = 2
+, {\bfseries AIN3} = 3
  \}
 \begin{DoxyCompactList}\small\item\em Channel indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structADS1115settings_ab4314bdcd3638815129e97458ca43950}\label{structADS1115settings_ab4314bdcd3638815129e97458ca43950}} 
+unsigned \mbox{\hyperlink{structADS1115settings_ab4314bdcd3638815129e97458ca43950}{get\+Sampling\+Rate}} () const
+\begin{DoxyCompactList}\small\item\em Get the sampling rate in Hz. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,27 +52,27 @@ enum \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{I
 int \mbox{\hyperlink{structADS1115settings_ae0f3b1d6ef8068fed5e580fd4d7123b3}{i2c\+\_\+bus}} = 1
 \begin{DoxyCompactList}\small\item\em I2C bus used (99\% always set to one) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0bbbe2}\label{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0bbbe2}} 
-uint8\+\_\+t \mbox{\hyperlink{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0bbbe2}{address}} = D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+D\+S1115\+\_\+\+A\+D\+D\+R\+E\+SS
+uint8\+\_\+t \mbox{\hyperlink{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0bbbe2}{address}} = DEFAULT\+\_\+\+ADS1115\+\_\+\+ADDRESS
 \begin{DoxyCompactList}\small\item\em I2C address of the ads1115. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}\label{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}} 
-\mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{Sampling\+Rates}} \mbox{\hyperlink{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}{sampling\+Rate}} = F\+S8\+HZ
+\mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{Sampling\+Rates}} \mbox{\hyperlink{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}{sampling\+Rate}} = FS8\+HZ
 \begin{DoxyCompactList}\small\item\em Sampling rate requested. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}\label{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}} 
-\mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{P\+GA}} \mbox{\hyperlink{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}{pga\+Gain}} = F\+S\+R2\+\_\+048
+\mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{PGA}} \mbox{\hyperlink{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}{pga\+Gain}} = FSR2\+\_\+048
 \begin{DoxyCompactList}\small\item\em Requested full scale range. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}\label{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}} 
-\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} \mbox{\hyperlink{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}{channel}} = A\+I\+N0
-\begin{DoxyCompactList}\small\item\em Requested input channel (A\+I\+N0..A\+I\+N3) \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structADS1115settings_add939ea3e172fc3c52fe9e53b05a66e4}\label{structADS1115settings_add939ea3e172fc3c52fe9e53b05a66e4}} 
-bool \mbox{\hyperlink{structADS1115settings_add939ea3e172fc3c52fe9e53b05a66e4}{init\+P\+I\+G\+P\+IO}} = true
-\begin{DoxyCompactList}\small\item\em If set to true the pigpio will be initialised. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} \mbox{\hyperlink{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}{channel}} = AIN0
+\begin{DoxyCompactList}\small\item\em Requested input channel (AIN0..AIN3) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structADS1115settings_a5b764c1300798718106d83bf76bd2608}\label{structADS1115settings_a5b764c1300798718106d83bf76bd2608}} 
+int \mbox{\hyperlink{structADS1115settings_a5b764c1300798718106d83bf76bd2608}{drdy\+\_\+chip}} = 0
+\begin{DoxyCompactList}\small\item\em GPIO Chip number which receives the Data Ready signal. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}\label{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}} 
-int \mbox{\hyperlink{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}{drdy\+\_\+gpio}} = D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+E\+R\+T\+\_\+\+R\+D\+Y\+\_\+\+T\+O\+\_\+\+G\+P\+IO
-\begin{DoxyCompactList}\small\item\em G\+P\+IO pin connected to A\+L\+E\+R\+T/\+R\+DY. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \mbox{\hyperlink{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}{drdy\+\_\+gpio}} = DEFAULT\+\_\+\+ALERT\+\_\+\+RDY\+\_\+\+TO\+\_\+\+GPIO
+\begin{DoxyCompactList}\small\item\em GPIO pin connected to ALERT/\+RDY. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-A\+D\+S1115 initial settings when starting the device. 
+ADS1115 initial settings when starting the device. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

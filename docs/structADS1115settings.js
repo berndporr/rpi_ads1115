@@ -22,11 +22,12 @@ var structADS1115settings =
       [ "FS475HZ", "structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a7fea2393497d03736ca6bf96b3ae55b2", null ],
       [ "FS860HZ", "structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a84398c434b3b9427990fafb9fae98093", null ]
     ] ],
+    [ "getSamplingRate", "structADS1115settings.html#ab4314bdcd3638815129e97458ca43950", null ],
     [ "address", "structADS1115settings.html#a5aac9fb517c9665aeca60f1a9b0bbbe2", null ],
     [ "channel", "structADS1115settings.html#a3f4f9b2d8b6f0ef724bd4e4a68b75245", null ],
+    [ "drdy_chip", "structADS1115settings.html#a5b764c1300798718106d83bf76bd2608", null ],
     [ "drdy_gpio", "structADS1115settings.html#a2ec35347e84e5165a35191e670c05b79", null ],
     [ "i2c_bus", "structADS1115settings.html#ae0f3b1d6ef8068fed5e580fd4d7123b3", null ],
-    [ "initPIGPIO", "structADS1115settings.html#add939ea3e172fc3c52fe9e53b05a66e4", null ],
     [ "pgaGain", "structADS1115settings.html#a9c5013fdbef7376faec2df49d123e67e", null ],
     [ "samplingRate", "structADS1115settings.html#aab5ef57bb9aef08aac7a7fd7de33a451", null ]
 ];

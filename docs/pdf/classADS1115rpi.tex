@@ -1,8 +1,8 @@
-\hypertarget{classADS1115rpi}{}\doxysection{A\+D\+S1115rpi Class Reference}
+\hypertarget{classADS1115rpi}{}\doxysection{ADS1115rpi Class Reference}
 \label{classADS1115rpi}\index{ADS1115rpi@{ADS1115rpi}}
 
 
-This class reads data from the A\+D\+S1115 in the background (separate thread) and calls a callback function whenever data is available.  
+This class reads data from the ADS1115 in the background (separate thread) and calls a callback function whenever data is available.  
 
 
 
@@ -13,28 +13,31 @@ This class reads data from the A\+D\+S1115 in the background (separate thread) a
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}\label{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}} 
-\mbox{\hyperlink{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}{$\sim$\+A\+D\+S1115rpi}} ()
+\mbox{\hyperlink{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}{$\sim$\+ADS1115rpi}} ()
 \begin{DoxyCompactList}\small\item\em Destructor which makes sure the data acquisition stops on exit. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classADS1115rpi_a515633c671efe89d43b814d4682440af}{has\+Sample}} (float sample)=0
 \begin{DoxyCompactList}\small\item\em Called when a new sample is available. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{set\+Channel}} (\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{A\+D\+S1115settings\+::\+Input}} channel)
+void \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{set\+Channel}} (\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings\+::\+Input}} channel)
 \begin{DoxyCompactList}\small\item\em Selects a different channel at the multiplexer while running. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}{start}} (\mbox{\hyperlink{structADS1115settings}{A\+D\+S1115settings}} settings=\mbox{\hyperlink{structADS1115settings}{A\+D\+S1115settings}}())
+void \mbox{\hyperlink{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}{start}} (\mbox{\hyperlink{structADS1115settings}{ADS1115settings}} settings=\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}())
 \begin{DoxyCompactList}\small\item\em Starts the data acquisition in the background and the callback is called with new samples. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510}\label{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510}} 
+\mbox{\hyperlink{structADS1115settings}{ADS1115settings}} \mbox{\hyperlink{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510}{get\+ADS1115settings}} () const
+\begin{DoxyCompactList}\small\item\em Returns the current settings. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}\label{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}} 
 void \mbox{\hyperlink{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}{stop}} ()
 \begin{DoxyCompactList}\small\item\em Stops the data acquistion. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-This class reads data from the A\+D\+S1115 in the background (separate thread) and calls a callback function whenever data is available. 
+This class reads data from the ADS1115 in the background (separate thread) and calls a callback function whenever data is available. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classADS1115rpi_a515633c671efe89d43b814d4682440af}\label{classADS1115rpi_a515633c671efe89d43b814d4682440af}} 
 \index{ADS1115rpi@{ADS1115rpi}!hasSample@{hasSample}}
 \index{hasSample@{hasSample}!ADS1115rpi@{ADS1115rpi}}
 \doxysubsubsection{\texorpdfstring{hasSample()}{hasSample()}}
-{\footnotesize\ttfamily virtual void A\+D\+S1115rpi\+::has\+Sample (\begin{DoxyParamCaption}\item[{float}]{sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void ADS1115rpi\+::has\+Sample (\begin{DoxyParamCaption}\item[{float}]{sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -49,7 +52,7 @@ This needs to be implemented in a derived class by the client. Defined as abstra
 \index{ADS1115rpi@{ADS1115rpi}!setChannel@{setChannel}}
 \index{setChannel@{setChannel}!ADS1115rpi@{ADS1115rpi}}
 \doxysubsubsection{\texorpdfstring{setChannel()}{setChannel()}}
-{\footnotesize\ttfamily void A\+D\+S1115rpi\+::set\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{A\+D\+S1115settings\+::\+Input}}}]{channel }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ADS1115rpi\+::set\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings\+::\+Input}}}]{channel }\end{DoxyParamCaption})}
 
 
 
@@ -64,7 +67,7 @@ Call this in the callback handler \mbox{\hyperlink{classADS1115rpi_a515633c671ef
 \index{ADS1115rpi@{ADS1115rpi}!start@{start}}
 \index{start@{start}!ADS1115rpi@{ADS1115rpi}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}}
-{\footnotesize\ttfamily void A\+D\+S1115rpi\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structADS1115settings}{A\+D\+S1115settings}}}]{settings = {\ttfamily \mbox{\hyperlink{structADS1115settings}{A\+D\+S1115settings}}()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ADS1115rpi\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}}]{settings = {\ttfamily \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}()} }\end{DoxyParamCaption})}
 
 
 
