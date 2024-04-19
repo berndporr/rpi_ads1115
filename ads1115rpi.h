@@ -21,6 +21,7 @@
 #include <linux/i2c-dev.h>
 #include <thread>
 #include <gpiod.h>
+#include <vector>
 
 // enable debug messages and error messages to stderr
 #ifndef NDEBUG
@@ -114,7 +115,8 @@ struct ADS1115settings {
     Input channel = AIN0;
 
     /**
-     * GPIO Chip number which receives the Data Ready signal
+     * GPIO Chip number which receives the Data Ready signal.
+     * For RPI 1-4 it's chip 0. For the RPI5 it's chip number 4.
      **/
     int drdy_chip = 0;
 
@@ -140,13 +142,19 @@ public:
 	stop();
     }
 
-    /**
-     * Called when a new sample is available.
-     * This needs to be implemented in a derived
-     * class by the client. Defined as abstract.
-     * \param sample Voltage from the selected channel.
-     **/
-    virtual void hasSample(float sample) = 0;
+    struct ADSCallbackInterface {
+	    /**
+	     * Called when a new sample is available.
+	     * This needs to be implemented in a derived
+	     * class by the client. Defined as abstract.
+	     * \param sample Voltage from the selected channel.
+	     **/
+	virtual void hasADS1115Sample(float sample) = 0;
+    };
+
+    void registerCallback(ADSCallbackInterface* ci) {
+	adsCallbackInterfaces.push_back(ci);
+    }
 
     /**
      * Selects a different channel at the multiplexer
@@ -214,6 +222,8 @@ private:
     int fd_i2c = -1;
 
     bool running = false;
+
+    std::vector<ADSCallbackInterface*> adsCallbackInterfaces;
 };
 
 
