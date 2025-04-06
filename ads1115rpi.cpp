@@ -73,7 +73,7 @@ void ADS1115rpi::setChannel(ADS1115settings::Input channel) {
 
 
 void ADS1115rpi::dataReady() {
-	float v = (float)i2c_readConversion() / (float)0x7fff * fullScaleVoltage() * 2;
+	float v = (float)i2c_readConversion() / (float)0x7fff * fullScaleVoltage();
 	for(auto &cb: adsCallbackInterfaces) {
 	    cb->hasADS1115Sample(v);
 	}
