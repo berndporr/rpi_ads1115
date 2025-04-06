@@ -11,8 +11,10 @@ communication between the ADS1115 and the client who just needs to
 implement the callback `hasSample(float sample)` which is then called
 at the requested sampling rate.
 
-The class uses the ALERT/RDY pin of the ADS1115 connected to GPIO 17
-to establish the sampling rate.
+*The class uses the ALERT/RDY pin of the ADS1115 connected to GPIO 17
+to establish the sampling rate.* Without this connection this driver
+won't work. The ALERT/RDY pin wakes up a thread when a sample is available
+which then calls the callback interface with the sample value.
 
 ## Prerequisites
 
