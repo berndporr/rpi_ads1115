@@ -6,7 +6,7 @@
  *
  * Copyright (c) 2007  MontaVista Software, Inc.
  * Copyright (c) 2007  Anton Vorontsov <avorontsov@ru.mvista.com>
- * Copyright (c) 2013-2024  Bernd Porr <mail@berndporr.me.uk>
+ * Copyright (c) 2013-2025  Bernd Porr <mail@berndporr.me.uk>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
 #include <assert.h>
 #include <linux/i2c-dev.h>
 #include <thread>
-#include <gpiod.h>
-#include <vector>
+#include <gpiod.hpp>
+#include <functional>
 
 // enable debug messages and error messages to stderr
 #ifndef NDEBUG
@@ -30,7 +30,7 @@
 
 static const char could_not_open_i2c[] = "Could not open I2C.\n";
 
-#define ISR_TIMEOUT 1000
+#define ISR_TIMEOUT_MS 500
 
 // default address if ADDR is pulled to GND
 #define DEFAULT_ADS1115_ADDRESS 0x48
@@ -142,18 +142,13 @@ public:
 	stop();
     }
 
-    struct ADSCallbackInterface {
-	    /**
-	     * Called when a new sample is available.
-	     * This needs to be implemented in a derived
-	     * class by the client. Defined as abstract.
-	     * \param sample Voltage from the selected channel.
-	     **/
-	virtual void hasADS1115Sample(float sample) = 0;
-    };
+    /**
+     * Callback function type when a new sample is available. Value is in volt.
+     **/
+    using ADSCallbackInterface = std::function<void(float)>;
 
-    void registerCallback(ADSCallbackInterface* ci) {
-	adsCallbackInterfaces.push_back(ci);
+    void registerCallback(ADSCallbackInterface ci) {
+	adsCallbackInterface = ci;
     }
 
     /**
@@ -214,16 +209,16 @@ private:
 	return 0;
     }
 
-    struct gpiod_chip *chipDRDY = nullptr;
-    struct gpiod_line *pinDRDY = nullptr;
-
+    std::shared_ptr<gpiod::chip> chip;
+    std::shared_ptr<gpiod::line_request> request;
+    
     std::thread thr;
 
     int fd_i2c = -1;
 
     bool running = false;
 
-    std::vector<ADSCallbackInterface*> adsCallbackInterfaces;
+    ADSCallbackInterface adsCallbackInterface;
 };
 
 

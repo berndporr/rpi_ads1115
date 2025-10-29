@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include <format>
 
 
 void ADS1115rpi::start(ADS1115settings settings) {
@@ -46,17 +47,24 @@ void ADS1115rpi::start(ADS1115settings settings) {
 	fprintf(stderr,"Receiving data.\n");
 #endif
 
-	chipDRDY = gpiod_chip_open_by_number(settings.drdy_chip);
-	pinDRDY = gpiod_chip_get_line(chipDRDY,settings.drdy_gpio);
+	const std::string chipPath = std::format("/dev/gpiochip{}", settings.drdy_chip);
+	const std::string consumername = std::format("gpioconsumer_{}_{}", settings.drdy_chip, settings.drdy_gpio);
 
-	int ret = gpiod_line_request_rising_edge_events(pinDRDY, "Consumer");
-	if (ret < 0) {
-#ifdef DEBUG
-	    fprintf(stderr,"Request event notification failed on pin %d and chip %d.\n",settings.drdy_chip,settings.drdy_gpio);
-#endif
-	    throw "Could not request event for IRQ.";
-	}
-
+	// Config the pin as input and detecting falling and rising edegs
+	gpiod::line_config line_cfg;
+	line_cfg.add_line_settings(
+				   settings.drdy_gpio,
+				   gpiod::line_settings()
+				   .set_direction(gpiod::line::direction::INPUT)
+				   .set_edge_detection(gpiod::line::edge::RISING));
+    
+	chip = std::make_shared<gpiod::chip>(chipPath);
+	    
+	auto builder = chip->prepare_request();
+	builder.set_consumer(consumername);
+	builder.set_line_config(line_cfg);
+	request = std::make_shared<gpiod::line_request>(builder.do_request());
+	
 	running = true;
 
 	thr = std::thread(&ADS1115rpi::worker,this);
@@ -74,19 +82,22 @@ void ADS1115rpi::setChannel(ADS1115settings::Input channel) {
 
 void ADS1115rpi::dataReady() {
 	float v = (float)i2c_readConversion() / (float)0x7fff * fullScaleVoltage();
-	for(auto &cb: adsCallbackInterfaces) {
-	    cb->hasADS1115Sample(v);
+	if (adsCallbackInterface) {
+	    adsCallbackInterface(v);
 	}
 }
 
 
 void ADS1115rpi::worker() {
     while (running) {
-	const struct timespec ts = { 1, 0 };
-	gpiod_line_event_wait(pinDRDY, &ts);
-	struct gpiod_line_event event;
-	gpiod_line_event_read(pinDRDY, &event);
-	dataReady();
+	bool r = request->wait_edge_events(std::chrono::milliseconds(ISR_TIMEOUT_MS));
+	if (r)
+	    {
+		gpiod::edge_event_buffer buffer;
+		request->read_edge_events(buffer, 1);
+		// callback
+		dataReady();
+	    }
     }
 }
 
@@ -95,8 +106,8 @@ void ADS1115rpi::stop() {
     if (!running) return;
     running = false;
     thr.join();
-    gpiod_line_release(pinDRDY);
-    gpiod_chip_close(chipDRDY);
+    request->release();
+    chip->close();
     close(fd_i2c);
 }
 

@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2007  MontaVista Software, Inc.
  * Copyright (c) 2007  Anton Vorontsov <avorontsov@ru.mvista.com>
- * Copyright (c) 2013-2024  Bernd Porr <mail@berndporr.me.uk>
+ * Copyright (c) 2013-2025  Bernd Porr <mail@berndporr.me.uk>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,9 @@
 
 // We inherit ADS1115rpi, implement
 // hasSample() and print the ADC reading.
-class ADS1115Printer : public ADS1115rpi::ADSCallbackInterface {
-	virtual void hasADS1115Sample(float v) override {
+class ADS1115Printer {
+public:
+	virtual void hasADS1115Sample(float v) {
 		printf("%e\n",v);
 	}
 };
@@ -31,9 +32,9 @@ class ADS1115Printer : public ADS1115rpi::ADSCallbackInterface {
 // Prints data till the user presses a key.
 int main(int argc, char *argv[]) {
 	fprintf(stderr,"Press any key to stop.\n");
-	ADS1115Printer ads1115Callback;
+	ADS1115Printer ads1115Printer;
 	ADS1115rpi ads1115rpi;
-	ads1115rpi.registerCallback(&ads1115Callback);
+	ads1115rpi.registerCallback([&](float v){ads1115Printer.hasADS1115Sample(v);});
         ADS1115settings s;
 	s.samplingRate = ADS1115settings::FS64HZ;
 	s.drdy_chip = 4; // for RPI1-4 chip = 0. For RPI5 it's chip = 4.
