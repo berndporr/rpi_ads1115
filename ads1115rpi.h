@@ -116,7 +116,6 @@ struct ADS1115settings {
 
     /**
      * GPIO Chip number which receives the Data Ready signal.
-     * For RPI 1-4 it's chip 0. For the RPI5 it's chip number 4.
      **/
     int drdy_chip = 0;
 

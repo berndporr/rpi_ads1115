@@ -36,9 +36,15 @@ int main(int argc, char *argv[]) {
 	ADS1115rpi ads1115rpi;
 	ads1115rpi.registerCallback([&](float v){ads1115Printer.hasADS1115Sample(v);});
         ADS1115settings s;
-	s.samplingRate = ADS1115settings::FS64HZ;
-	s.drdy_chip = 4; // for RPI1-4 chip = 0. For RPI5 it's chip = 4.
-	ads1115rpi.start(s);
+	s.samplingRate = ADS1115settings::FS8HZ;
+	try {
+	    ads1115rpi.start(s);
+	}
+	catch (const std::exception &e)
+	{
+	    std::cerr << "Error: " << e.what() << std::endl;
+	    return -1;
+	}
         fprintf(stderr,"fs = %d\n",ads1115rpi.getADS1115settings().getSamplingRate());
 	getchar();
 	ads1115rpi.stop();
