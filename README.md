@@ -48,10 +48,13 @@ Data plotter: In the subdir `qwt-plot` is a simple QT plotting application.
 
 The online doc is here: https://berndporr.github.io/rpi_ads1115/
 
-You need to overload the abstract callback handler: ``` virtual void
-hasSample(float v) { }; ``` with the functionality you'd like it to
-do. You can switch the input channel within the callback handler to cycle
-through different inputs.
+You need to register a function:
+```
+void(float);
+```
+at `registerCallback(f)` which then receives the voltage readings at the
+requested sampling rate. If you want to call another method in another
+class you can use a lamda function.
 
 ### Start the data acquisition:
 ```
