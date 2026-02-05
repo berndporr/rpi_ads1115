@@ -1,8 +1,10 @@
 # QT ADS1115 plotter
 
+![alt tag](screenshot.png)
+
 ## Required packages
 
-Install the QT5 and Qwt development packages:
+Install the QT6 and Qcustomplot development packages:
 
 ```
 apt-get install qt6-base-dev
