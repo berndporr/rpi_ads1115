@@ -5,8 +5,8 @@
 Install the QT5 and Qwt development packages:
 
 ```
-apt-get install qtdeclarative5-dev
-apt-get install libqwt-qt5-dev
+apt-get install qt6-base-dev
+apt-get install libqcustomplot-dev
 ```
 
 Make sure that you have installed the ads1115 library (i.e. `sudo make install`) in `/usr/local`.
