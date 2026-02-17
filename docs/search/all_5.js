@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['i2c_5fbus_9',['i2c_bus',['../structADS1115settings.html#ae0f3b1d6ef8068fed5e580fd4d7123b3',1,'ADS1115settings']]],
-  ['input_10',['Input',['../structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d',1,'ADS1115settings']]]
+  ['pga_0',['PGA',['../structADS1115settings.html#a831970032a15754ead970931dd25ac5f',1,'ADS1115settings']]],
+  ['pgagain_1',['pgaGain',['../structADS1115settings.html#a9c5013fdbef7376faec2df49d123e67e',1,'ADS1115settings']]]
 ];

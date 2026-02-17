@@ -42,7 +42,7 @@ the ADC data to the screen or you can pipe it into a file.
     cd example
     ./ads1115_printer
 
-Data plotter: In the subdir `qwt-plot` is a simple QT plotting application.
+Data plotter: In the subdir `rtplotter` is a simple QT plotting application.
 
 ## General usage
 
