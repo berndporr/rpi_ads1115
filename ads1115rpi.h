@@ -38,13 +38,11 @@ static const char could_not_open_i2c[] = "Could not open I2C.\n";
 // default GPIO pin for the ALRT/DRY signal
 #define DEFAULT_ALERT_RDY_TO_GPIO 17
 
-
-
-
 /**
  * ADS1115 initial settings when starting the device.
  **/
-struct ADS1115settings {
+struct ADS1115settings
+{
 
     /**
      * I2C bus used (99% always set to one)
@@ -59,24 +57,26 @@ struct ADS1115settings {
     /**
      * Sampling rates
      **/
-    enum SamplingRates {
-	FS8HZ   = 0,
-	FS16HZ  = 1,
-	FS32HZ  = 2,
-	FS64HZ  = 3,
-	FS128HZ = 4,
-	FS250HZ = 5,
-	FS475HZ = 6,
-	FS860HZ = 7
+    enum SamplingRates
+    {
+        FS8HZ = 0,
+        FS16HZ = 1,
+        FS32HZ = 2,
+        FS64HZ = 3,
+        FS128HZ = 4,
+        FS250HZ = 5,
+        FS475HZ = 6,
+        FS860HZ = 7
     };
-	
+
     /**
      * Get the sampling rate in Hz
      **/
-    inline unsigned getSamplingRate() const {
-	const unsigned SamplingRateEnum2Value[8] =
-	    {8,16,32,64,128,250,475,860};
-	return SamplingRateEnum2Value[samplingRate];
+    inline unsigned getSamplingRate() const
+    {
+        const unsigned SamplingRateEnum2Value[8] =
+            {8, 16, 32, 64, 128, 250, 475, 860};
+        return SamplingRateEnum2Value[samplingRate];
     }
 
     /**
@@ -87,11 +87,12 @@ struct ADS1115settings {
     /**
      * Full scale range: 2.048V, 1.024V, 0.512V or 0.256V.
      **/
-    enum PGA {
-	FSR2_048 = 2,
-	FSR1_024 = 3,
-	FSR0_512 = 4,
-	FSR0_256 = 5
+    enum PGA
+    {
+        FSR2_048 = 2,
+        FSR1_024 = 3,
+        FSR0_512 = 4,
+        FSR0_256 = 5
     };
 
     /**
@@ -102,11 +103,12 @@ struct ADS1115settings {
     /**
      * Channel indices
      **/
-    enum Input {
-	AIN0 = 0,
-	AIN1 = 1,
-	AIN2 = 2,
-	AIN3 = 3
+    enum Input
+    {
+        AIN0 = 0,
+        AIN1 = 1,
+        AIN2 = 2,
+        AIN3 = 3
     };
 
     /**
@@ -125,20 +127,21 @@ struct ADS1115settings {
     int drdy_gpio = DEFAULT_ALERT_RDY_TO_GPIO;
 };
 
-
 /**
  * This class reads data from the ADS1115 in the background (separate
  * thread) and calls a callback function whenever data is available.
  **/
-class ADS1115rpi {
+class ADS1115rpi
+{
 
 public:
     /**
      * Destructor which makes sure the data acquisition
      * stops on exit.
      **/
-    ~ADS1115rpi() {
-	stop();
+    ~ADS1115rpi()
+    {
+        stop();
     }
 
     /**
@@ -146,8 +149,9 @@ public:
      **/
     using ADSCallbackInterface = std::function<void(float)>;
 
-    void registerCallback(ADSCallbackInterface ci) {
-	adsCallbackInterface = ci;
+    void registerCallback(ADSCallbackInterface ci)
+    {
+        adsCallbackInterface = ci;
     }
 
     /**
@@ -164,13 +168,14 @@ public:
      * callback is called with new samples.
      * \param settings A struct with the settings.
      **/
-    void start(ADS1115settings settings = ADS1115settings() );
+    void start(ADS1115settings settings = ADS1115settings());
 
     /**
      * Returns the current settings
      **/
-    ADS1115settings getADS1115settings() const {
-	return ads1115settings;
+    ADS1115settings getADS1115settings() const
+    {
+        return ads1115settings;
     }
 
     /**
@@ -193,24 +198,26 @@ private:
     const uint8_t reg_lo_thres = 2;
     const uint8_t reg_hi_thres = 3;
 
-    float fullScaleVoltage() {
-	switch (ads1115settings.pgaGain) {
-	case ADS1115settings::FSR2_048:
-	    return 2.048f;
-	case ADS1115settings::FSR1_024:
-	    return 1.024f;
-	case ADS1115settings::FSR0_512:
-	    return 0.512f;
-	case ADS1115settings::FSR0_256:
-	    return 0.256f;
-	}
-	assert(1 == 0);
-	return 0;
+    float fullScaleVoltage()
+    {
+        switch (ads1115settings.pgaGain)
+        {
+        case ADS1115settings::FSR2_048:
+            return 2.048f;
+        case ADS1115settings::FSR1_024:
+            return 1.024f;
+        case ADS1115settings::FSR0_512:
+            return 0.512f;
+        case ADS1115settings::FSR0_256:
+            return 0.256f;
+        }
+        assert(1 == 0);
+        return 0;
     }
 
     std::shared_ptr<gpiod::chip> chip;
     std::shared_ptr<gpiod::line_request> request;
-    
+
     std::thread thr;
 
     int fd_i2c = -1;
@@ -219,6 +226,5 @@ private:
 
     ADSCallbackInterface adsCallbackInterface;
 };
-
 
 #endif

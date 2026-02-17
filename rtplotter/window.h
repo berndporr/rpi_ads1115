@@ -3,7 +3,6 @@
 
 #include "ads1115rpi.h"
 
-
 #include <qcustomplot.h>
 
 #include <QBoxLayout>
@@ -39,20 +38,20 @@ public:
 private:
     static constexpr int nRealtimePoints = 500;
 
-    QLabel       *adcLabel;
-    QPushButton  *button;
-    QCustomPlot  *plot;
+    QLabel *adcLabel;
+    QPushButton *button;
+    QCustomPlot *plot;
     QSharedPointer<QCPDataContainer<QCPGraphData>> animdata;
 
-    QVBoxLayout  *vLayout;  // vertical layout
-    QHBoxLayout  *hLayout;  // horizontal layout
+    QVBoxLayout *vLayout; // vertical layout
+    QHBoxLayout *hLayout; // horizontal layout
 
     void reset();
 
-    void timerEvent( QTimerEvent * );
+    void timerEvent(QTimerEvent *);
 
     // set up the low level driver
-	ADS1115rpi ads1115;
+    ADS1115rpi ads1115;
 };
 
 #endif // WINDOW_H
