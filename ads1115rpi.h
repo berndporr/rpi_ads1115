@@ -28,16 +28,6 @@
 #define DEBUG
 #endif
 
-static const char could_not_open_i2c[] = "Could not open I2C.\n";
-
-#define ISR_TIMEOUT_MS 500
-
-// default address if ADDR is pulled to GND
-#define DEFAULT_ADS1115_ADDRESS 0x48
-
-// default GPIO pin for the ALRT/DRY signal
-#define DEFAULT_ALERT_RDY_TO_GPIO 17
-
 /**
  * ADS1115 initial settings when starting the device.
  **/
@@ -48,6 +38,13 @@ struct ADS1115settings
      * I2C bus used (99% always set to one)
      **/
     int i2c_bus = 1;
+
+    /**
+     * The default address of the ADS1115.
+     * 48H is the address of the ADS1115 if the ADR pin is pulled to GND
+     * and taken here as the default address.
+     */
+    static constexpr uint8_t DEFAULT_ADS1115_ADDRESS = 0x48;
 
     /**
      * I2C address of the ads1115
@@ -120,6 +117,11 @@ struct ADS1115settings
      * GPIO Chip number which receives the Data Ready signal.
      **/
     int drdy_chip = 0;
+
+    /**
+     * Default GPIO pin for the ALRT/DRY signal.
+     **/
+    static constexpr int DEFAULT_ALERT_RDY_TO_GPIO = 17;
 
     /**
      * GPIO pin connected to ALERT/RDY
@@ -225,6 +227,9 @@ private:
     bool running = false;
 
     ADSCallbackInterface adsCallbackInterface;
+
+    // timeout if no DATA READY has been received
+    static constexpr int64_t ISR_TIMEOUT_MS = 500;
 };
 
 #endif
