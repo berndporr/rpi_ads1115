@@ -1,0 +1,100 @@
+\doxysection{ADS1115settings Struct Reference}
+\hypertarget{structADS1115settings}{}\label{structADS1115settings}\index{ADS1115settings@{ADS1115settings}}
+
+
+ADS1115 initial settings when starting the device.  
+
+
+
+
+{\ttfamily \#include $<$ads1115rpi.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}\label{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357} 
+enum \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{Sampling\+Rates}} \{ \newline
+{\bfseries FS8\+HZ} = 0
+, {\bfseries FS16\+HZ} = 1
+, {\bfseries FS32\+HZ} = 2
+, {\bfseries FS64\+HZ} = 3
+, \newline
+{\bfseries FS128\+HZ} = 4
+, {\bfseries FS250\+HZ} = 5
+, {\bfseries FS475\+HZ} = 6
+, {\bfseries FS860\+HZ} = 7
+ \}
+\begin{DoxyCompactList}\small\item\em Sampling rates. \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a831970032a15754ead970931dd25ac5f}\label{structADS1115settings_a831970032a15754ead970931dd25ac5f} 
+enum \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{PGA}} \{ {\bfseries FSR2\+\_\+048} = 2
+, {\bfseries FSR1\+\_\+024} = 3
+, {\bfseries FSR0\+\_\+512} = 4
+, {\bfseries FSR0\+\_\+256} = 5
+ \}
+\begin{DoxyCompactList}\small\item\em Full scale range\+: 2.\+048V, 1.\+024V, 0.\+512V or 0.\+256V. \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}\label{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d} 
+enum \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} \{ {\bfseries AIN0} = 0
+, {\bfseries AIN1} = 1
+, {\bfseries AIN2} = 2
+, {\bfseries AIN3} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Channel indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structADS1115settings_ab4314bdcd3638815129e97458ca43950}\label{structADS1115settings_ab4314bdcd3638815129e97458ca43950} 
+unsigned {\bfseries get\+Sampling\+Rate} () const
+\begin{DoxyCompactList}\small\item\em Get the sampling rate in Hz. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structADS1115settings_ae0f3b1d6ef8068fed5e580fd4d7123b3}\label{structADS1115settings_ae0f3b1d6ef8068fed5e580fd4d7123b3} 
+int {\bfseries i2c\+\_\+bus} = 1
+\begin{DoxyCompactList}\small\item\em I2C bus used (99\% always set to one) \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0bbbe2}\label{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0bbbe2} 
+uint8\+\_\+t {\bfseries address} = \mbox{\hyperlink{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa}{DEFAULT\+\_\+\+ADS1115\+\_\+\+ADDRESS}}
+\begin{DoxyCompactList}\small\item\em I2C address of the ads1115. \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}\label{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451} 
+\mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{Sampling\+Rates}} {\bfseries sampling\+Rate} = FS8\+HZ
+\begin{DoxyCompactList}\small\item\em Sampling rate requested. \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}\label{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e} 
+\mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{PGA}} {\bfseries pga\+Gain} = FSR2\+\_\+048
+\begin{DoxyCompactList}\small\item\em Requested full scale range. \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}\label{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245} 
+\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} {\bfseries channel} = AIN0
+\begin{DoxyCompactList}\small\item\em Requested input channel (AIN0..AIN3) \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a5b764c1300798718106d83bf76bd2608}\label{structADS1115settings_a5b764c1300798718106d83bf76bd2608} 
+int {\bfseries drdy\+\_\+chip} = 0
+\begin{DoxyCompactList}\small\item\em GPIO Chip number which receives the Data Ready signal. \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}\label{structADS1115settings_a2ec35347e84e5165a35191e670c05b79} 
+int {\bfseries drdy\+\_\+gpio} = \mbox{\hyperlink{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66}{DEFAULT\+\_\+\+ALERT\+\_\+\+RDY\+\_\+\+TO\+\_\+\+GPIO}}
+\begin{DoxyCompactList}\small\item\em GPIO pin connected to ALERT/\+RDY. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint8\+\_\+t \mbox{\hyperlink{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa}{DEFAULT\+\_\+\+ADS1115\+\_\+\+ADDRESS}} = 0x48
+\begin{DoxyCompactList}\small\item\em The default address of the ADS1115. \end{DoxyCompactList}\item 
+\Hypertarget{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66}\label{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66} 
+static constexpr int {\bfseries DEFAULT\+\_\+\+ALERT\+\_\+\+RDY\+\_\+\+TO\+\_\+\+GPIO} = 17
+\begin{DoxyCompactList}\small\item\em Default GPIO pin for the ALRT/\+DRY signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+ADS1115 initial settings when starting the device. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa}\label{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa} 
+\index{ADS1115settings@{ADS1115settings}!DEFAULT\_ADS1115\_ADDRESS@{DEFAULT\_ADS1115\_ADDRESS}}
+\index{DEFAULT\_ADS1115\_ADDRESS@{DEFAULT\_ADS1115\_ADDRESS}!ADS1115settings@{ADS1115settings}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_ADS1115\_ADDRESS}{DEFAULT\_ADS1115\_ADDRESS}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t ADS1115settings\+::\+DEFAULT\+\_\+\+ADS1115\+\_\+\+ADDRESS = 0x48\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The default address of the ADS1115. 
+
+48H is the address of the ADS1115 if the ADR pin is pulled to GND and taken here as the default address. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ads1115rpi.\+h\end{DoxyCompactItemize}

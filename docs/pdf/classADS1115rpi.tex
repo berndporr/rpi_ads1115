@@ -1,0 +1,89 @@
+\doxysection{ADS1115rpi Class Reference}
+\hypertarget{classADS1115rpi}{}\label{classADS1115rpi}\index{ADS1115rpi@{ADS1115rpi}}
+
+
+This class reads data from the ADS1115 in the background (separate thread) and calls a callback function whenever data is available.  
+
+
+
+
+{\ttfamily \#include $<$ads1115rpi.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallback\+Interface}} = std\+::function$<$ void(float)$>$
+\begin{DoxyCompactList}\small\item\em Callback function type when a new sample is available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}\label{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+ADS1115rpi} ()
+\begin{DoxyCompactList}\small\item\em Destructor which makes sure the data acquisition stops on exit. \end{DoxyCompactList}\item 
+\Hypertarget{classADS1115rpi_a720c2d3b7151367221af969ab436f299}\label{classADS1115rpi_a720c2d3b7151367221af969ab436f299} 
+void {\bfseries register\+Callback} (\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallback\+Interface}} ci)
+\item 
+void \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{set\+Channel}} (\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings\+::\+Input}} channel)
+\begin{DoxyCompactList}\small\item\em Selects a different channel at the multiplexer while running. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}{start}} (\mbox{\hyperlink{structADS1115settings}{ADS1115settings}} settings=\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}())
+\begin{DoxyCompactList}\small\item\em Starts the data acquisition in the background and the callback is called with new samples. \end{DoxyCompactList}\item 
+\Hypertarget{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510}\label{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510} 
+\mbox{\hyperlink{structADS1115settings}{ADS1115settings}} {\bfseries get\+ADS1115settings} () const
+\begin{DoxyCompactList}\small\item\em Returns the current settings. \end{DoxyCompactList}\item 
+\Hypertarget{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}\label{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf} 
+void {\bfseries stop} ()
+\begin{DoxyCompactList}\small\item\em Stops the data acquistion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class reads data from the ADS1115 in the background (separate thread) and calls a callback function whenever data is available. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}\label{classADS1115rpi_a69806d343269487c97e5d34c9c13902c} 
+\index{ADS1115rpi@{ADS1115rpi}!ADSCallbackInterface@{ADSCallbackInterface}}
+\index{ADSCallbackInterface@{ADSCallbackInterface}!ADS1115rpi@{ADS1115rpi}}
+\doxysubsubsection{\texorpdfstring{ADSCallbackInterface}{ADSCallbackInterface}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADS1115rpi\+::\+ADSCallback\+Interface}} =  std\+::function$<$void(float)$>$}
+
+
+
+Callback function type when a new sample is available. 
+
+Value is in volt. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}\label{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091} 
+\index{ADS1115rpi@{ADS1115rpi}!setChannel@{setChannel}}
+\index{setChannel@{setChannel}!ADS1115rpi@{ADS1115rpi}}
+\doxysubsubsection{\texorpdfstring{setChannel()}{setChannel()}}
+{\footnotesize\ttfamily void ADS1115rpi\+::set\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings\+::\+Input}}}]{channel }\end{DoxyParamCaption})}
+
+
+
+Selects a different channel at the multiplexer while running. 
+
+Call this in the callback handler has\+Sample() to cycle through different channels. 
+\begin{DoxyParams}{Parameters}
+{\em channel} & Sets the channel from A0..A3. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}\label{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9} 
+\index{ADS1115rpi@{ADS1115rpi}!start@{start}}
+\index{start@{start}!ADS1115rpi@{ADS1115rpi}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void ADS1115rpi\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}}]{settings = {\ttfamily \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}()} }\end{DoxyParamCaption})}
+
+
+
+Starts the data acquisition in the background and the callback is called with new samples. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em settings} & A struct with the settings. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ads1115rpi.\+h\end{DoxyCompactItemize}
