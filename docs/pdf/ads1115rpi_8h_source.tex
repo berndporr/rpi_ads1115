@@ -99,69 +99,69 @@
 \DoxyCodeLine{00148\ }
 \DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ =\ std::function<void(\textcolor{keywordtype}{float})>;}
 \DoxyCodeLine{00153\ }
-\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ registerCallback(\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ ci)}
-\DoxyCodeLine{00155\ \ \ \ \ \{}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ adsCallbackInterface\ =\ ci;}
-\DoxyCodeLine{00157\ \ \ \ \ \}}
-\DoxyCodeLine{00158\ }
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{setChannel}}(\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings::Input}}\ channel);}
-\DoxyCodeLine{00167\ }
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}{start}}(\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ settings\ =\ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}());}
-\DoxyCodeLine{00174\ }
-\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ \mbox{\hyperlink{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510}{getADS1115settings}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00179\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ads1115settings;}
-\DoxyCodeLine{00181\ \ \ \ \ \}}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}{stop}}();}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a720c2d3b7151367221af969ab436f299}{registerCallback}}(\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ ci)}
+\DoxyCodeLine{00160\ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ adsCallbackInterface\ =\ ci;}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{setChannel}}(\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings::Input}}\ channel);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}{start}}(\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ settings\ =\ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}());}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ \mbox{\hyperlink{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510}{getADS1115settings}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00184\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ads1115settings;}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
 \DoxyCodeLine{00187\ }
-\DoxyCodeLine{00188\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ ads1115settings;}
-\DoxyCodeLine{00190\ }
-\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ dataReady();}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}{stop}}();}
 \DoxyCodeLine{00192\ }
-\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{void}\ worker();}
-\DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{void}\ i2c\_writeWord(uint8\_t\ reg,\ \textcolor{keywordtype}{unsigned}\ data);}
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ i2c\_readWord(uint8\_t\ reg);}
-\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{int}\ i2c\_readConversion();}
-\DoxyCodeLine{00198\ }
-\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ reg\_config\ =\ 1;}
-\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ reg\_lo\_thres\ =\ 2;}
-\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ reg\_hi\_thres\ =\ 3;}
-\DoxyCodeLine{00202\ }
-\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{float}\ fullScaleVoltage()}
-\DoxyCodeLine{00204\ \ \ \ \ \{}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ads1115settings.\mbox{\hyperlink{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}{pgaGain}})}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR2\_048:}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2.048f;}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR1\_024:}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.024f;}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR0\_512:}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.512f;}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR0\_256:}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.256f;}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ assert(1\ ==\ 0);}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00218\ \ \ \ \ \}}
-\DoxyCodeLine{00219\ }
-\DoxyCodeLine{00220\ \ \ \ \ std::shared\_ptr<gpiod::chip>\ chip;}
-\DoxyCodeLine{00221\ \ \ \ \ std::shared\_ptr<gpiod::line\_request>\ request;}
-\DoxyCodeLine{00222\ }
-\DoxyCodeLine{00223\ \ \ \ \ std::thread\ thr;}
+\DoxyCodeLine{00193\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ ads1115settings;}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{void}\ dataReady();}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ worker();}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordtype}{void}\ i2c\_writeWord(uint8\_t\ reg,\ \textcolor{keywordtype}{unsigned}\ data);}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ i2c\_readWord(uint8\_t\ reg);}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordtype}{int}\ i2c\_readConversion();}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ reg\_config\ =\ 1;}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ reg\_lo\_thres\ =\ 2;}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ reg\_hi\_thres\ =\ 3;}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{float}\ fullScaleVoltage()}
+\DoxyCodeLine{00209\ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ads1115settings.\mbox{\hyperlink{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}{pgaGain}})}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR2\_048:}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2.048f;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR1\_024:}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.024f;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR0\_512:}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.512f;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ADS1115settings::FSR0\_256:}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.256f;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ assert(1\ ==\ 0);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
 \DoxyCodeLine{00224\ }
-\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{int}\ fd\_i2c\ =\ -\/1;}
-\DoxyCodeLine{00226\ }
-\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{bool}\ running\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00228\ }
-\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ adsCallbackInterface;}
-\DoxyCodeLine{00230\ }
-\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{//\ timeout\ if\ no\ DATA\ READY\ has\ been\ received}}
-\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ ISR\_TIMEOUT\_MS\ =\ 500;}
-\DoxyCodeLine{00233\ \};}
-\DoxyCodeLine{00234\ }
-\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00225\ \ \ \ \ std::shared\_ptr<gpiod::chip>\ chip;}
+\DoxyCodeLine{00226\ \ \ \ \ std::shared\_ptr<gpiod::line\_request>\ request;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ std::thread\ thr;}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{int}\ fd\_i2c\ =\ -\/1;}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordtype}{bool}\ running\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ adsCallbackInterface;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{//\ timeout\ if\ no\ DATA\ READY\ has\ been\ received}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ ISR\_TIMEOUT\_MS\ =\ 500;}
+\DoxyCodeLine{00238\ \};}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -20,9 +20,8 @@ using \mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCal
 \Hypertarget{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}\label{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5} 
 {\bfseries \texorpdfstring{$\sim$}{\string~}\+ADS1115rpi} ()
 \begin{DoxyCompactList}\small\item\em Destructor which makes sure the data acquisition stops on exit. \end{DoxyCompactList}\item 
-\Hypertarget{classADS1115rpi_a720c2d3b7151367221af969ab436f299}\label{classADS1115rpi_a720c2d3b7151367221af969ab436f299} 
-void {\bfseries register\+Callback} (\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallback\+Interface}} ci)
-\item 
+void \mbox{\hyperlink{classADS1115rpi_a720c2d3b7151367221af969ab436f299}{register\+Callback}} (\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallback\+Interface}} ci)
+\begin{DoxyCompactList}\small\item\em Registers callback with this class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{set\+Channel}} (\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings\+::\+Input}} channel)
 \begin{DoxyCompactList}\small\item\em Selects a different channel at the multiplexer while running. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classADS1115rpi_a401e626b6afed688a9b0518c0316b2a9}{start}} (\mbox{\hyperlink{structADS1115settings}{ADS1115settings}} settings=\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}())
@@ -49,9 +48,24 @@ This class reads data from the ADS1115 in the background (separate thread) and c
 
 Callback function type when a new sample is available. 
 
-Value is in volt. 
+Callback value is in volt. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classADS1115rpi_a720c2d3b7151367221af969ab436f299}\label{classADS1115rpi_a720c2d3b7151367221af969ab436f299} 
+\index{ADS1115rpi@{ADS1115rpi}!registerCallback@{registerCallback}}
+\index{registerCallback@{registerCallback}!ADS1115rpi@{ADS1115rpi}}
+\doxysubsubsection{\texorpdfstring{registerCallback()}{registerCallback()}}
+{\footnotesize\ttfamily void ADS1115rpi\+::register\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallback\+Interface}}}]{ci }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Registers callback with this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ci} & Callback method and needs to be of type ADSCallback\+Interface. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}\label{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091} 
 \index{ADS1115rpi@{ADS1115rpi}!setChannel@{setChannel}}
 \index{setChannel@{setChannel}!ADS1115rpi@{ADS1115rpi}}

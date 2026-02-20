@@ -114,8 +114,8 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~ADS1115rpi</b> ()</td></tr>
 <tr class="memdesc:a3dec47dc3242290468f21396df0d71a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor which makes sure the data acquisition stops on exit. <br /></td></tr>
 <tr class="separator:a3dec47dc3242290468f21396df0d71a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a720c2d3b7151367221af969ab436f299" id="r_a720c2d3b7151367221af969ab436f299"><td class="memItemLeft" align="right" valign="top"><a id="a720c2d3b7151367221af969ab436f299" name="a720c2d3b7151367221af969ab436f299"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>registerCallback</b> (<a class="el" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> ci)</td></tr>
+<tr class="memitem:a720c2d3b7151367221af969ab436f299" id="r_a720c2d3b7151367221af969ab436f299"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a720c2d3b7151367221af969ab436f299">registerCallback</a> (<a class="el" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> ci)</td></tr>
+<tr class="memdesc:a720c2d3b7151367221af969ab436f299"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers callback with this class.  <br /></td></tr>
 <tr class="separator:a720c2d3b7151367221af969ab436f299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f36d0cca6cbec106b5a626d9973e091" id="r_a4f36d0cca6cbec106b5a626d9973e091"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">setChannel</a> (<a class="el" href="structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d">ADS1115settings::Input</a> channel)</td></tr>
 <tr class="memdesc:a4f36d0cca6cbec106b5a626d9973e091"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects a different channel at the multiplexer while running.  <br /></td></tr>
@@ -148,11 +148,45 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
 </div><div class="memdoc">
 
 <p>Callback function type when a new sample is available. </p>
-<p>Value is in volt. </p>
+<p>Callback value is in volt. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a720c2d3b7151367221af969ab436f299" name="a720c2d3b7151367221af969ab436f299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a720c2d3b7151367221af969ab436f299">&#9670;&#160;</a></span>registerCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADS1115rpi::registerCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a>&#160;</td>
+          <td class="paramname"><em>ci</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Registers callback with this class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ci</td><td>Callback method and needs to be of type ADSCallbackInterface. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a4f36d0cca6cbec106b5a626d9973e091" name="a4f36d0cca6cbec106b5a626d9973e091"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f36d0cca6cbec106b5a626d9973e091">&#9670;&#160;</a></span>setChannel()</h2>
 

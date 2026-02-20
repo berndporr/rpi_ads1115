@@ -208,80 +208,83 @@ $(document).ready(function(){initNavTree('ads1115rpi_8h_source.html',''); initRe
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">  152</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> = std::function&lt;void(<span class="keywordtype">float</span>)&gt;;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">void</span> registerCallback(<a class="code hl_typedef" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> ci)</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    {</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        adsCallbackInterface = ci;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    }</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">  166</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">setChannel</a>(<a class="code hl_enumeration" href="structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d">ADS1115settings::Input</a> channel);</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">  173</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">start</a>(<a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a> settings = <a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a>());</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#ad8f096a3061f19cda469efe0eee60510">  178</a></span>    <a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a> <a class="code hl_function" href="classADS1115rpi.html#ad8f096a3061f19cda469efe0eee60510">getADS1115settings</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">return</span> ads1115settings;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
+<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a720c2d3b7151367221af969ab436f299">  159</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADS1115rpi.html#a720c2d3b7151367221af969ab436f299">registerCallback</a>(<a class="code hl_typedef" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> ci)</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        adsCallbackInterface = ci;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
 </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a910b9735f8bef69a0844a821fda06baf">  186</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADS1115rpi.html#a910b9735f8bef69a0844a821fda06baf">stop</a>();</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">  171</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">setChannel</a>(<a class="code hl_enumeration" href="structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d">ADS1115settings::Input</a> channel);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">  178</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">start</a>(<a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a> settings = <a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a>());</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="}">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#ad8f096a3061f19cda469efe0eee60510">  183</a></span>    <a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a> <a class="code hl_function" href="classADS1115rpi.html#ad8f096a3061f19cda469efe0eee60510">getADS1115settings</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keywordflow">return</span> ads1115settings;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
+</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a> ads1115settings;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> dataReady();</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="classADS1115rpi.html#a910b9735f8bef69a0844a821fda06baf">  191</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADS1115rpi.html#a910b9735f8bef69a0844a821fda06baf">stop</a>();</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordtype">void</span> worker();</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordtype">void</span> i2c_writeWord(uint8_t reg, <span class="keywordtype">unsigned</span> data);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordtype">unsigned</span> i2c_readWord(uint8_t reg);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordtype">int</span> i2c_readConversion();</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keyword">const</span> uint8_t reg_config = 1;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keyword">const</span> uint8_t reg_lo_thres = 2;</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keyword">const</span> uint8_t reg_hi_thres = 3;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordtype">float</span> fullScaleVoltage()</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    {</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordflow">switch</span> (ads1115settings.<a class="code hl_variable" href="structADS1115settings.html#a9c5013fdbef7376faec2df49d123e67e">pgaGain</a>)</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="keywordflow">case</span> ADS1115settings::FSR2_048:</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">return</span> 2.048f;</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">case</span> ADS1115settings::FSR1_024:</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            <span class="keywordflow">return</span> 1.024f;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="keywordflow">case</span> ADS1115settings::FSR0_512:</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            <span class="keywordflow">return</span> 0.512f;</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keywordflow">case</span> ADS1115settings::FSR0_256:</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            <span class="keywordflow">return</span> 0.256f;</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        }</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        assert(1 == 0);</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    }</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    std::shared_ptr&lt;gpiod::chip&gt; chip;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    std::shared_ptr&lt;gpiod::line_request&gt; request;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    std::thread thr;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <a class="code hl_struct" href="structADS1115settings.html">ADS1115settings</a> ads1115settings;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordtype">void</span> dataReady();</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordtype">void</span> worker();</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">void</span> i2c_writeWord(uint8_t reg, <span class="keywordtype">unsigned</span> data);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordtype">unsigned</span> i2c_readWord(uint8_t reg);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordtype">int</span> i2c_readConversion();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keyword">const</span> uint8_t reg_config = 1;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keyword">const</span> uint8_t reg_lo_thres = 2;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keyword">const</span> uint8_t reg_hi_thres = 3;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">float</span> fullScaleVoltage()</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordflow">switch</span> (ads1115settings.<a class="code hl_variable" href="structADS1115settings.html#a9c5013fdbef7376faec2df49d123e67e">pgaGain</a>)</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <span class="keywordflow">case</span> ADS1115settings::FSR2_048:</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>            <span class="keywordflow">return</span> 2.048f;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">case</span> ADS1115settings::FSR1_024:</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            <span class="keywordflow">return</span> 1.024f;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <span class="keywordflow">case</span> ADS1115settings::FSR0_512:</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>            <span class="keywordflow">return</span> 0.512f;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">case</span> ADS1115settings::FSR0_256:</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            <span class="keywordflow">return</span> 0.256f;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        }</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        assert(1 == 0);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    }</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordtype">int</span> fd_i2c = -1;</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordtype">bool</span> running = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <a class="code hl_typedef" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> adsCallbackInterface;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="comment">// timeout if no DATA READY has been received</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> int64_t ISR_TIMEOUT_MS = 500;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>};</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    std::shared_ptr&lt;gpiod::chip&gt; chip;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    std::shared_ptr&lt;gpiod::line_request&gt; request;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    std::thread thr;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordtype">int</span> fd_i2c = -1;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">bool</span> running = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <a class="code hl_typedef" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> adsCallbackInterface;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="comment">// timeout if no DATA READY has been received</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> int64_t ISR_TIMEOUT_MS = 500;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>};</div>
 </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassADS1115rpi_html"><div class="ttname"><a href="classADS1115rpi.html">ADS1115rpi</a></div><div class="ttdoc">This class reads data from the ADS1115 in the background (separate thread) and calls a callback funct...</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:137</div></div>
 <div class="ttc" id="aclassADS1115rpi_html_a3dec47dc3242290468f21396df0d71a5"><div class="ttname"><a href="classADS1115rpi.html#a3dec47dc3242290468f21396df0d71a5">ADS1115rpi::~ADS1115rpi</a></div><div class="ttdeci">~ADS1115rpi()</div><div class="ttdoc">Destructor which makes sure the data acquisition stops on exit.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:144</div></div>
 <div class="ttc" id="aclassADS1115rpi_html_a401e626b6afed688a9b0518c0316b2a9"><div class="ttname"><a href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">ADS1115rpi::start</a></div><div class="ttdeci">void start(ADS1115settings settings=ADS1115settings())</div><div class="ttdoc">Starts the data acquisition in the background and the callback is called with new samples.</div></div>
 <div class="ttc" id="aclassADS1115rpi_html_a4f36d0cca6cbec106b5a626d9973e091"><div class="ttname"><a href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">ADS1115rpi::setChannel</a></div><div class="ttdeci">void setChannel(ADS1115settings::Input channel)</div><div class="ttdoc">Selects a different channel at the multiplexer while running.</div></div>
 <div class="ttc" id="aclassADS1115rpi_html_a69806d343269487c97e5d34c9c13902c"><div class="ttname"><a href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADS1115rpi::ADSCallbackInterface</a></div><div class="ttdeci">std::function&lt; void(float)&gt; ADSCallbackInterface</div><div class="ttdoc">Callback function type when a new sample is available.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:152</div></div>
+<div class="ttc" id="aclassADS1115rpi_html_a720c2d3b7151367221af969ab436f299"><div class="ttname"><a href="classADS1115rpi.html#a720c2d3b7151367221af969ab436f299">ADS1115rpi::registerCallback</a></div><div class="ttdeci">void registerCallback(ADSCallbackInterface ci)</div><div class="ttdoc">Registers callback with this class.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:159</div></div>
 <div class="ttc" id="aclassADS1115rpi_html_a910b9735f8bef69a0844a821fda06baf"><div class="ttname"><a href="classADS1115rpi.html#a910b9735f8bef69a0844a821fda06baf">ADS1115rpi::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops the data acquistion.</div></div>
-<div class="ttc" id="aclassADS1115rpi_html_ad8f096a3061f19cda469efe0eee60510"><div class="ttname"><a href="classADS1115rpi.html#ad8f096a3061f19cda469efe0eee60510">ADS1115rpi::getADS1115settings</a></div><div class="ttdeci">ADS1115settings getADS1115settings() const</div><div class="ttdoc">Returns the current settings.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:178</div></div>
+<div class="ttc" id="aclassADS1115rpi_html_ad8f096a3061f19cda469efe0eee60510"><div class="ttname"><a href="classADS1115rpi.html#ad8f096a3061f19cda469efe0eee60510">ADS1115rpi::getADS1115settings</a></div><div class="ttdeci">ADS1115settings getADS1115settings() const</div><div class="ttdoc">Returns the current settings.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:183</div></div>
 <div class="ttc" id="astructADS1115settings_html"><div class="ttname"><a href="structADS1115settings.html">ADS1115settings</a></div><div class="ttdoc">ADS1115 initial settings when starting the device.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:35</div></div>
 <div class="ttc" id="astructADS1115settings_html_a17845a1a94f94bb7d2406dbe13bc560d"><div class="ttname"><a href="structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d">ADS1115settings::Input</a></div><div class="ttdeci">Input</div><div class="ttdoc">Channel indices.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:104</div></div>
 <div class="ttc" id="astructADS1115settings_html_a2d2bfcac34bf116790df8b08001dcb66"><div class="ttname"><a href="structADS1115settings.html#a2d2bfcac34bf116790df8b08001dcb66">ADS1115settings::DEFAULT_ALERT_RDY_TO_GPIO</a></div><div class="ttdeci">static constexpr int DEFAULT_ALERT_RDY_TO_GPIO</div><div class="ttdoc">Default GPIO pin for the ALRT/DRY signal.</div><div class="ttdef"><b>Definition</b> ads1115rpi.h:124</div></div>

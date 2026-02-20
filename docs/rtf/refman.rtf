@@ -224,10 +224,12 @@ Destructor which makes sure the data acquisition stops on exit. }{
 }\par
 }\par}
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-
-void {\b registerCallback} ({\b ADSCallbackInterface} ci){\bkmkstart AAAAAAAAAD}
-{\bkmkend AAAAAAAAAD}
-\par
+void {\b registerCallback} ({\b ADSCallbackInterface} ci)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Registers callback with this class. }{
+}\par
+}\par}
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 void {\b setChannel} ({\b ADS1115settings::Input} channel)\par
 {
@@ -244,8 +246,8 @@ Starts the data acquisition in the background and the callback is called with ne
 }\par}
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 
-{\b ADS1115settings} {\b getADS1115settings} () const{\bkmkstart AAAAAAAAAE}
-{\bkmkend AAAAAAAAAE}
+{\b ADS1115settings} {\b getADS1115settings} () const{\bkmkstart AAAAAAAAAD}
+{\bkmkend AAAAAAAAAD}
 \par
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -254,8 +256,8 @@ Returns the current settings. }{
 }\par}
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 
-void {\b stop} (){\bkmkstart AAAAAAAAAF}
-{\bkmkend AAAAAAAAAF}
+void {\b stop} (){\bkmkstart AAAAAAAAAE}
+{\bkmkend AAAAAAAAAE}
 \par
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -281,8 +283,8 @@ Member Typedef Documentation\par
 {\b 
 using {\b ADS1115rpi::ADSCallbackInterface} =  std::function<void(float)>}}
 \par
-{\bkmkstart AAAAAAAAAG}
-{\bkmkend AAAAAAAAAG}
+{\bkmkstart AAAAAAAAAF}
+{\bkmkend AAAAAAAAAF}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -290,12 +292,38 @@ using {\b ADS1115rpi::ADSCallbackInterface} =  std::function<void(float)>}}
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 Callback function type when a new sample is available. }}\par
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-Value is in volt. \par
+Callback value is in volt. \par
 }}
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Member Function Documentation\par
 \pard\plain 
+{\xe \v registerCallback\:ADS1115rpi}
+{\xe \v ADS1115rpi\:registerCallback}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+void ADS1115rpi::registerCallback ({\b ADSCallbackInterface}  {\i ci}){\f2 [inline]}}}
+\par
+{\bkmkstart AAAAAAAAAG}
+{\bkmkend AAAAAAAAAG}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Registers callback with this class. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i ci} \cell }{Callback method and needs to be of type ADSCallbackInterface. \cell }
+{\row }
+}
+}}
 {\xe \v setChannel\:ADS1115rpi}
 {\xe \v ADS1115rpi\:setChannel}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
@@ -667,70 +695,70 @@ ads1115rpi.h\par \pard\plain
 148 \par
 152     {\cf17 using }ADSCallbackInterface = std::function<void({\cf18 float})>;\par
 153 \par
-154     {\cf18 void} registerCallback(ADSCallbackInterface ci)\par
-155     \{\par
-156         adsCallbackInterface = ci;\par
-157     \}\par
-158 \par
-166     {\cf18 void} setChannel(ADS1115settings::Input channel);\par
-167 \par
-173     {\cf18 void} start(ADS1115settings settings = ADS1115settings());\par
-174 \par
-178     ADS1115settings getADS1115settings(){\cf17  const}\par
-179 {\cf17     }\{\par
-180         {\cf19 return} ads1115settings;\par
-181     \}\par
-182 \par
-186     {\cf18 void} stop();\par
+159     {\cf18 void} registerCallback(ADSCallbackInterface ci)\par
+160     \{\par
+161         adsCallbackInterface = ci;\par
+162     \}\par
+163 \par
+171     {\cf18 void} setChannel(ADS1115settings::Input channel);\par
+172 \par
+178     {\cf18 void} start(ADS1115settings settings = ADS1115settings());\par
+179 \par
+183     ADS1115settings getADS1115settings(){\cf17  const}\par
+184 {\cf17     }\{\par
+185         {\cf19 return} ads1115settings;\par
+186     \}\par
 187 \par
-188 {\cf17 private}:\par
-189     ADS1115settings ads1115settings;\par
-190 \par
-191     {\cf18 void} dataReady();\par
+191     {\cf18 void} stop();\par
 192 \par
-193     {\cf18 void} worker();\par
-194 \par
-195     {\cf18 void} i2c_writeWord(uint8_t reg, {\cf18 unsigned} data);\par
-196     {\cf18 unsigned} i2c_readWord(uint8_t reg);\par
-197     {\cf18 int} i2c_readConversion();\par
-198 \par
-199     {\cf17 const} uint8_t reg_config = 1;\par
-200     {\cf17 const} uint8_t reg_lo_thres = 2;\par
-201     {\cf17 const} uint8_t reg_hi_thres = 3;\par
-202 \par
-203     {\cf18 float} fullScaleVoltage()\par
-204     \{\par
-205         {\cf19 switch} (ads1115settings.pgaGain)\par
-206         \{\par
-207         {\cf19 case} ADS1115settings::FSR2_048:\par
-208             {\cf19 return} 2.048f;\par
-209         {\cf19 case} ADS1115settings::FSR1_024:\par
-210             {\cf19 return} 1.024f;\par
-211         {\cf19 case} ADS1115settings::FSR0_512:\par
-212             {\cf19 return} 0.512f;\par
-213         {\cf19 case} ADS1115settings::FSR0_256:\par
-214             {\cf19 return} 0.256f;\par
-215         \}\par
-216         assert(1 == 0);\par
-217         {\cf19 return} 0;\par
-218     \}\par
-219 \par
-220     std::shared_ptr<gpiod::chip> chip;\par
-221     std::shared_ptr<gpiod::line_request> request;\par
-222 \par
-223     std::thread thr;\par
+193 {\cf17 private}:\par
+194     ADS1115settings ads1115settings;\par
+195 \par
+196     {\cf18 void} dataReady();\par
+197 \par
+198     {\cf18 void} worker();\par
+199 \par
+200     {\cf18 void} i2c_writeWord(uint8_t reg, {\cf18 unsigned} data);\par
+201     {\cf18 unsigned} i2c_readWord(uint8_t reg);\par
+202     {\cf18 int} i2c_readConversion();\par
+203 \par
+204     {\cf17 const} uint8_t reg_config = 1;\par
+205     {\cf17 const} uint8_t reg_lo_thres = 2;\par
+206     {\cf17 const} uint8_t reg_hi_thres = 3;\par
+207 \par
+208     {\cf18 float} fullScaleVoltage()\par
+209     \{\par
+210         {\cf19 switch} (ads1115settings.pgaGain)\par
+211         \{\par
+212         {\cf19 case} ADS1115settings::FSR2_048:\par
+213             {\cf19 return} 2.048f;\par
+214         {\cf19 case} ADS1115settings::FSR1_024:\par
+215             {\cf19 return} 1.024f;\par
+216         {\cf19 case} ADS1115settings::FSR0_512:\par
+217             {\cf19 return} 0.512f;\par
+218         {\cf19 case} ADS1115settings::FSR0_256:\par
+219             {\cf19 return} 0.256f;\par
+220         \}\par
+221         assert(1 == 0);\par
+222         {\cf19 return} 0;\par
+223     \}\par
 224 \par
-225     {\cf18 int} fd_i2c = -1;\par
-226 \par
-227     {\cf18 bool} running = {\cf17 false};\par
-228 \par
-229     ADSCallbackInterface adsCallbackInterface;\par
-230 \par
-231     {\cf20 // timeout if no DATA READY has been received}\par
-232     {\cf17 static} {\cf17 constexpr} int64_t ISR_TIMEOUT_MS = 500;\par
-233 \};\par
-234 \par
-235 {\cf21 #endif}\par
+225     std::shared_ptr<gpiod::chip> chip;\par
+226     std::shared_ptr<gpiod::line_request> request;\par
+227 \par
+228     std::thread thr;\par
+229 \par
+230     {\cf18 int} fd_i2c = -1;\par
+231 \par
+232     {\cf18 bool} running = {\cf17 false};\par
+233 \par
+234     ADSCallbackInterface adsCallbackInterface;\par
+235 \par
+236     {\cf20 // timeout if no DATA READY has been received}\par
+237     {\cf17 static} {\cf17 constexpr} int64_t ISR_TIMEOUT_MS = 500;\par
+238 \};\par
+239 \par
+240 {\cf21 #endif}\par
 }
 
 \pard\plain \sect\sbkpage
