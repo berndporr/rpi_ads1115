@@ -147,10 +147,15 @@ public:
     }
 
     /**
-     * Callback function type when a new sample is available. Value is in volt.
+     * Callback function type when a new sample is available. Callback value is in volt.
      **/
     using ADSCallbackInterface = std::function<void(float)>;
 
+    /**
+     * Registers callback with this class.
+     *
+     * \param ci Callback method and needs to be of type ADSCallbackInterface.
+     */
     void registerCallback(ADSCallbackInterface ci)
     {
         adsCallbackInterface = ci;
