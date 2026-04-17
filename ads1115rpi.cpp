@@ -17,7 +17,7 @@ void ADS1115rpi::start(ADS1115settings settings)
 	{
 		char i2copen[] = "Could not open I2C.\n";
 #ifdef DEBUG
-		fprintf(stderr, i2open);
+		fprintf(stderr, i2copen);
 #endif
 		throw std::invalid_argument(i2copen);
 	}
@@ -127,7 +127,7 @@ void ADS1115rpi::i2c_writeWord(uint8_t reg, unsigned data)
 	if (r < 0)
 	{
 #ifdef DEBUG
-		fprintf(stderr, "Could not write word from %02x. ret=%d.\n", ads1115settings.address, r);
+		fprintf(stderr, "Could not write word from %02x. ret=%ld.\n", ads1115settings.address, r);
 #endif
 		throw std::invalid_argument("Could not write to i2c.");
 	}
@@ -142,7 +142,7 @@ unsigned ADS1115rpi::i2c_readWord(uint8_t reg)
 	if (r < 0)
 	{
 #ifdef DEBUG
-		fprintf(stderr, "Could not read word from %02x. ret=%d.\n", ads1115settings.address, r);
+		fprintf(stderr, "Could not read word from %02x. ret=%ld.\n", ads1115settings.address, r);
 #endif
 		throw std::invalid_argument("Could not read from i2c.");
 	}
@@ -159,7 +159,7 @@ int ADS1115rpi::i2c_readConversion()
 	if (r < 0)
 	{
 #ifdef DEBUG
-		fprintf(stderr, "Could not read ADC value. ret=%d.\n", r);
+		fprintf(stderr, "Could not read ADC value. ret=%ld.\n", r);
 #endif
 		throw std::invalid_argument("Could not read from i2c.");
 	}
